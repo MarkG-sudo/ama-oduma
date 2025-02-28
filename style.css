@@ -166,7 +166,7 @@ section {
     justify-content: center;
     align-items: center;
     background: var(--primary-color);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assests/images/ama-oduma-hero.avif');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assests/images/ama-oduma-hero.avif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -178,7 +178,7 @@ section {
 /* Headline Styling */
 #hero h1 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 40px;
+    font-size: 70px;
     max-width: 80%;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     margin-bottom: 10px;
@@ -187,7 +187,7 @@ section {
 /* Subtext */
 #hero p {
     font-family: 'Nunito', sans-serif;
-    font-size: 18px;
+    font-size: 35px;
     max-width: 70%;
     line-height: 1.4;
     margin-bottom: 20px;
