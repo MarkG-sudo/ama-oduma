@@ -143,9 +143,9 @@ nav {
     }
 
    
-    /* body.nav-open {
+    body.nav-open {
         overflow: hidden;
-    } */
+    }
 }
 
 
@@ -195,10 +195,10 @@ section {
 
 /* Brand Logo */
 #brand-logo img {
-    width: 120px;
+    width: 160px;
     height: auto;
     object-fit: contain;
-    opacity: 0.9;
+    /* opacity: 0.9; */
 }
 
 /* Tablet View (768px and below) */
@@ -322,13 +322,11 @@ section {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 80vh;
-        padding: 50px 10%;
-        gap: 50px;
-        background-color: #f8f6f2;
+        height: fit-content;
+        padding: 10px 10px;
+        
     }
     
-    /* Text Content */
     .about-content {
         flex: 1;
         text-align: left;
@@ -337,7 +335,7 @@ section {
     }
     
     .about-content h2 {
-        font-size: 1.0rem;
+        font-size: 1.5rem;
     }
 
     
@@ -350,11 +348,11 @@ section {
         text-align: center;
         height: auto;
         width: 100%;
-        padding: 50px 5%;
+        padding: 10px 5%;
     }
 
     .about-content h2 {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
 
     .about-image img {

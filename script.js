@@ -3,18 +3,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelector(".nav-links");
 
     hamburger.addEventListener("click", function () {
-        if (navLinks.style.display === "flex") {
-            navLinks.style.display = "none";
-        } else {
-            navLinks.style.display = "flex";
-        }
+        navLinks.classList.toggle("active");
     });
 
-    // Close menu when a link is clicked
+    // Close menu when a link is clicked (only in mobile view)
     document.querySelectorAll(".nav-links a").forEach(link => {
         link.addEventListener("click", () => {
-            navLinks.style.display = "none";
+            if (window.innerWidth <= 768) { 
+                navLinks.classList.remove("active");
+            }
         });
     });
 });
-    
