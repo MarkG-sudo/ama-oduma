@@ -125,3 +125,27 @@ function prevSlide() {
     currentIndex--;
     updateSlidePosition();
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const fortunes = [
+        "Elegance is timeless, sustainability is priceless.",
+        "Carry the culture, wear the legacy.",
+        "Your bag, your story, your statement.",
+        "Sustainability never goes out of style.",
+        "Crafted with heart, carried with pride."
+    ];
+
+    const fortuneText = document.getElementById("fortune-text");
+
+    function updateFortune() {
+        fortuneText.innerText = fortunes[Math.floor(Math.random() * fortunes.length)];
+    }
+
+    // Set initial fortune
+    updateFortune();
+
+    // Update fortune every 10 seconds
+    setInterval(updateFortune, 10000);
+});

@@ -58,7 +58,7 @@ nav {
 
 .logo {
     font-family: 'Libre Baskerville', serif;
-    font-size: 24px;
+    font-size: 20px;
     white-space: nowrap;
     /* Prevents text from breaking */
 }
@@ -80,6 +80,7 @@ nav {
     text-decoration: none;
     font-family: 'Nunito', sans-serif;
     font-weight: 400;
+    font-size: 15px;
     padding: 10px;
     transition: color 0.3s ease-in-out;
 }
@@ -186,7 +187,7 @@ section {
 /* Headline Styling */
 #hero h1 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 70px;
+    font-size: 40px;
     max-width: 80%;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     margin-bottom: 10px;
@@ -196,7 +197,7 @@ section {
 /* Subtext */
 #hero p {
     font-family: 'Nunito', sans-serif;
-    font-size: 35px;
+    font-size: 20px;
     max-width: 70%;
     line-height: 1.4;
     margin-bottom: 20px;
@@ -220,15 +221,17 @@ section {
 /* Tablet View (768px and below) */
 @media (max-width: 768px) {
     #hero {
-        height: 85vh;
+        height: 5vh;
         width: 100%;
         padding: 15px;
-        background-position: center top;
+        background-position: center top;       
     }
 
     #hero h1 {
         font-size: 34px;
         max-width: 90%;
+        margin-top: 30%;
+        
     }
 
     #hero p {
@@ -246,11 +249,12 @@ section {
 
     @media (max-width: 480px) {
         .mobile-break::before {
-            content: "\A"; /* Inserts a line break */
+            content: "\A";
+            /* Inserts a line break */
             white-space: pre;
         }
     }
-    
+
     #hero {
         height: 80vh;
         padding: 10px;
@@ -261,6 +265,7 @@ section {
         font-size: 28px;
         max-width: 95%;
         line-height: 1.2;
+        align-content: flex-end;
     }
 
     #hero p {
@@ -269,6 +274,7 @@ section {
     }
 
     #brand-logo img {
+        /* display: none; */
         width: 80px;
     }
 }
@@ -293,7 +299,7 @@ section {
 }
 
 .about-content h2 {
-    font-size: 4rem;
+    font-size: 2rem;
     font-weight: 600;
     color: #133b1f;
     line-height: 1.6;
@@ -417,9 +423,22 @@ section {
     /* Optional: Smoother corners */
 }
 
+
+.product-card p {
+    text-decoration: underline;
+    
+}
+
+.product-card a {
+    color: #6b6666;
+    text-decoration: none;
+    font-size: 13px;
+
+}
+
 /* Image Styling */
 .product-card img {
-    width: 100%;
+    width: 70%;
     /* Shrinks image to avoid touching card edges */
     height: auto;
     /* Maintains aspect ratio */
@@ -429,7 +448,7 @@ section {
 }
 
 
-.product-card:hover {
+.product-card img:hover {
     transform: scale(1.05);
 }
 
@@ -452,20 +471,31 @@ section {
     background-color: #183F26;
     text-align: center;
     overflow: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./assests/images/ama-oduma-bg-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 #gallery h2 {
     font-family: 'Poppins', serif;
     color: #ffffff;
+    /* margin-bottom: 70px; */
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+#gallery p {
+    font-family: 'Poppins', serif;
+    color: #C1D4CB;
     margin-bottom: 70px;
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 0.9rem;
 }
 
 /* Wrapper for entire gallery */
 .gallery-wrapper {
     position: relative;
-    width: 70%;
+    width: 50%;
     max-width: 800px;
     height: 70%;
     margin: 0 auto;
@@ -480,7 +510,7 @@ section {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border: 13px solid #ffffff;
+    border: 9px solid #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -490,13 +520,15 @@ section {
 .gallery-grid {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 300%; /* Ensures proper slide width */
+    width: 300%;
+    /* Ensures proper slide width */
 }
 
 .gallery-item {
     width: 100%;
     height: 100%;
-    flex: 0 0 100%; /* Ensures images do not stack */
+    flex: 0 0 100%;
+    /* Ensures images do not stack */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -504,10 +536,11 @@ section {
 }
 
 .gallery-item img {
-    width: 70%;
-    height: 75%;
+    width: 55%;
+    height: 70%;
     object-fit: cover;
-    object-position: center center; /* Ensures the most important part is visible */
+    object-position: center center;
+    /* Ensures the most important part is visible */
 }
 
 /* Dots for slider */
@@ -517,19 +550,24 @@ section {
 }
 
 .gallery-dot {
-    width: 5px; /* Increase size if needed */
+    width: 5px;
+    /* Increase size if needed */
     height: 5px;
     margin: 0 9px;
-    border: 1px solid rgba(94, 89, 89, 0.7); /* Creates the hollow effect */
+    border: 1px solid rgba(94, 89, 89, 0.7);
+    /* Creates the hollow effect */
     border-radius: 50%;
     display: inline-block;
     transition: all 0.3s ease;
-    background: transparent; /* Ensures it's hollow */
+    background: transparent;
+    /* Ensures it's hollow */
 }
 
 .gallery-dot.active {
-    background: white; /* Fills the active dot */
-    border-color: white; /* Keeps border visible */
+    background: white;
+    /* Fills the active dot */
+    border-color: white;
+    /* Keeps border visible */
 }
 
 
@@ -555,11 +593,13 @@ section {
 
 /* Moves arrows outside the wrapper */
 .prev {
-    left: -70px; /* Moves it further out */
+    left: -70px;
+    /* Moves it further out */
 }
 
 .next {
-    right: -70px; /* Moves it further out */
+    right: -70px;
+    /* Moves it further out */
 }
 
 /* Hide dots on desktop */
@@ -572,20 +612,22 @@ section {
 /* Hide arrows and fix mobile layout */
 @media (max-width: 768px) {
     .gallery-arrow {
-        display: none; /* Hide arrows on mobile */
+        display: none;
+        /* Hide arrows on mobile */
     }
 
     #gallery h2 {
         font-family: 'Poppins', serif;
-        color: #ffffff;
-        margin-bottom: 70px;
-        font-weight: 600;
+        /* color: #C1D4CB; */
+        color: #d4a24f;
+        font-weight: 600;    
         font-size: 1.1rem;
     }
 
-    
+
     .gallery-container {
-        overflow: hidden; /* Ensures only one image is visible */
+        overflow: hidden;
+        /* Ensures only one image is visible */
         width: 100%;
         display: flex;
         align-items: center;
@@ -595,24 +637,105 @@ section {
 
     .gallery-grid {
         display: flex;
-        flex-direction: row !important; /* Force horizontal layout */
-        flex-wrap: nowrap; /* Prevents stacking */
-        width: 300%; /* Adjusted for sliding */
+        flex-direction: row !important;
+        /* Force horizontal layout */
+        flex-wrap: nowrap;
+        /* Prevents stacking */
+        width: 300%;
+        /* Adjusted for sliding */
         transition: transform 0.5s ease-in-out;
     }
 
     .gallery-item {
-        width: 100%; /* Each image takes full width of container */
-        flex: 0 0 100%; /* Prevents images from shrinking or growing */
+        width: 100%;
+        /* Each image takes full width of container */
+        flex: 0 0 100%;
+        /* Prevents images from shrinking or growing */
         display: flex;
         justify-content: center;
         align-items: center;
     }
+    .gallery-item p {
+        display: none;
+    }
 
     .gallery-item img {
         width: 100%;
-        height: auto; /* Ensures aspect ratio remains */
+        height: auto;
+        /* Ensures aspect ratio remains */
         object-fit: cover;
+    }
+}
+
+
+
+/* 🌍 Product Assurance Section */
+#assurance {
+    background: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    height: 70vh;
+}
+
+/* 🛠 Grid Layout */
+.assurance-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* 🎴 Assurance Cards */
+.assurance-card {
+    text-align: center;
+    padding: 20px;
+}
+
+/* 🎨 Icons */
+.assurance-card img {
+    width: 50px;
+    margin-bottom: 15px;
+}
+
+/* 🏷 Headings */
+.assurance-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* 📜 Text */
+.assurance-card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* 🎯 Call-to-action Links */
+.assurance-card a {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #28a745;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.assurance-card a:hover {
+    color: #1f7a30;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 1024px) {
+    .assurance-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .assurance-container {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -624,22 +747,47 @@ section {
 #contact {
     background-color: #306F44;
     color: white;
-    padding: 50px 20px;
+    padding: 0;
     text-align: center;
+
 }
 
 .contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1600px;
+    margin: 0;
+    padding: 0;
+    /* width: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+
+}
+
+.contact-logo {
+    /* border: 1px solid red;   */
+    display: inline-block;
+    /* Shrinks container to fit content */
+    padding: 0;
+    margin: 0;
+
 }
 
 .contact-logo img {
-    width: 40%;
-    height: 30%;
+    width: 35%;
+    height: 20%;
     /* margin-bottom: 20px; */
+}
+
+#bag-quotes p {
+    font-size: 12px;
+    color: #C1D4CB;
+
+}
+
+#bag-quotes h4 {
+    color: #000000;
+
 }
 
 .social-icons {
@@ -649,17 +797,35 @@ section {
 }
 
 .social-icons a {
-    color: white;
-    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    /* background-color: #ffffff; */
+    border-radius: 50%;
+    /* Makes them circular */
     text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.social-icons a i {
+    font-size: 25px;
+    color: #c2baba;
+    /* Default icon color */
+    transition: color 0.3s ease-in-out;
 }
 
 .contact-links {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    max-width: 800px;
-    margin-bottom: 30px;
+    max-width: 1000px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #d4a24f;
+    border-radius: 10%;
 }
 
 .contact-links h4 {
@@ -672,9 +838,10 @@ section {
 }
 
 .contact-links li a {
-    color: white;
+    color: #C1D4CB;
     text-decoration: none;
     transition: color 0.3s;
+    font-size: 11px;
 }
 
 .contact-links li a:hover {
@@ -683,7 +850,8 @@ section {
 
 .contact-footer {
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 10px;
+    /* border: 1px solid red */
 }
 
 .contact-footer ul {
@@ -692,12 +860,13 @@ section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 19px;
 }
 
 .contact-footer li a {
     color: white;
     text-decoration: none;
+    font-size: 12px;
 }
 
 /* Responsive Design */
@@ -705,6 +874,7 @@ section {
     .contact-links {
         flex-direction: column;
         align-items: center;
+        border-bottom: none;
     }
 
     .contact-links div {
@@ -727,6 +897,11 @@ footer {
     bottom: 0;
     width: 100%;
     max-width: 100%;
+}
+
+footer p {
+    font-size: 13px;
+    color: #c2baba;
 }
 
 /* Responsive Design */
