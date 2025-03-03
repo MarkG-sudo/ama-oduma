@@ -674,7 +674,8 @@ section {
     background: #fff;
     padding: 60px 20px;
     text-align: center;
-    height: 70vh;
+    /* height: 70vh; */
+    overflow-x: hidden;
 }
 
 /* 🛠 Grid Layout */
