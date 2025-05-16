@@ -14,6 +14,11 @@
     box-sizing: content-box;
 }
 
+html {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -22,6 +27,7 @@ body {
     color: var(--primary-color);
     scroll-behavior: smooth;
     overflow-x: hidden;
+    max-width: 100%;
 }
 
 /* =============================
