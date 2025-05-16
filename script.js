@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
+// body
 
 let currentIndex = 1; // Start at the first real image (since we added clones)
 const slides = document.querySelectorAll(".gallery-item");
