@@ -896,7 +896,7 @@ section {
 
 .social-icons a i {
     font-size: 25px;
-    color: #c2baba;
+    color: #000000;
     /* Default icon color */
     transition: color 0.3s ease-in-out;
 }
