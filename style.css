@@ -996,3 +996,32 @@ footer p {
 
 
 }
+
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    z-index: 999;
+    background-color: #32743c;
+    /* Match your theme */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #5ddb23;
+    transform: translateY(-2px);
+}
+
+#scrollToTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+}
