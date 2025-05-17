@@ -172,13 +172,13 @@ nav ul a::after {
     bottom: -2px;
     width: 100%;
     height: 3px;
-    background: #306F44;
+    background: #2dce60;
     transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
 }
 
 nav ul a:hover {
-    color: #306F44;
+    color: #2dce60;
     transform: translateY(-2px);
 }
 
@@ -187,14 +187,14 @@ nav ul a:hover::after {
 }
 
 nav ul a:active {
-    color: #306F44;
+    color: #2dce60;
     transform: scale(0.95);
 }
 
 nav ul a.active {
-    color: #306F44;
+    color: #2dce60;
     font-weight: bold;
-    border-bottom: 2px solid #306F44;
+    border-bottom: 2px solid #2dce60;
 }
 
 
