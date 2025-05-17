@@ -1,6 +1,5 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Nunito:wght@300;400;600&family=Libre+Baskerville:wght@400;700&display=swap');
-
 :root {
     --primary-color: black;
     --secondary-color: white;
@@ -28,25 +27,29 @@ body {
     scroll-behavior: smooth;
     overflow-x: hidden;
     max-width: 100%;
+    padding-top: 60px;
+    /* space for fixed header */
 }
 
 /* =============================
-   ✅ HEADER STYLES
+   ✅ HEADER STYLES - fixed header
 ============================= */
 header {
-    text-align: center;
-    padding: 20px 50px 0px 80px;
-    background: #000000;
-    position: sticky;
+    position: fixed;
     top: 0;
-    height: 50px;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    height: 60px;
+    /* enough height for content */
     z-index: 1000;
-}
-
-@media (max-width: 768px) {
-    header {
-        padding: 15px;
-    }
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    /* balanced horizontal padding */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* optional shadow */
+    text-align: center;
 }
 
 /* =============================
@@ -54,9 +57,12 @@ header {
 ============================= */
 nav {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
     gap: 20px;
 }
 
@@ -70,12 +76,24 @@ nav {
     white-space: nowrap;
 }
 
+/* =============================
+   ✅ RESPONSIVE MEDIA QUERIES
+============================= */
 @media (max-width: 768px) {
+    header {
+        padding: 0 5px;
+        height: 65px;
+    }
+
+    body {
+        padding-top: 50px;
+        /* match header height */
+    }
+
     .logo {
         font-size: 20px;
     }
 }
-
 /* =============================
    ✅ MENU TOGGLE (HAMBURGER)
 ============================= */
@@ -197,7 +215,7 @@ section {
     justify-content: center;
     align-items: center;
     background: var(--primary-color);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/images/AO\ tote.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.233), rgba(0, 0, 0, 0.253)), url('./assets/images/overview.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -205,6 +223,7 @@ section {
     padding: 20px;
     text-align: center;
 }
+
 
 /* Headline Styling */
 #hero h1 {
@@ -215,7 +234,7 @@ section {
     margin-top: 170px;
     margin-bottom: 10px;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
 
 /* Subtext */
@@ -225,13 +244,14 @@ section {
     max-width: 70%;
     line-height: 1.4;
     margin-bottom: 20px;
+   
 }
 
 #brand-logo {
     align-content: end;
-    /* border: 5px solid red; */
-    height: 200px;
-    width: 250px;
+    width: 350px;
+    
+
 }
 
 /* Brand Logo */
@@ -245,7 +265,7 @@ section {
 /* Tablet View (768px and below) */
 @media (max-width: 768px) {
     #hero {
-        height: 5vh;
+        /* height: 5vh; */
         width: 100%;
         padding: 15px;
         background-position: center top;
@@ -309,8 +329,8 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    padding: 50px 10%;
+    height: 60vh;
+    padding: 100px 10%;
     gap: 50px;
     background-color: #f8f6f2;
     overflow-y: hidden;
@@ -713,7 +733,7 @@ section {
 
 /* 🌍 Product Assurance Section */
 #assurance {
-    background: #fff;
+    background: #F8F6F2;
     padding: 60px 20px;
     text-align: center;
     /* height: 70vh; */
@@ -787,41 +807,90 @@ section {
     }
 }
 
-#lifestyle {
-    height: fit-content;
-    background-color: #f8f6f2;
+
+
+.image-lifestyle {
+    padding: 30px 30px;
+    background-color: #F8F6F2;
+}
+
+.lifestyle-flex {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0px;    
+}
+
+
+.lifestyle-content {
+    flex: 1;
+    flex-basis: 40%;
+    padding: 0px;
+    text-align: left;
+}
+
+.lifestyle-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+
+.lifestyle-content span {
+    color: rgb(151, 135, 10);
+    font-size: 1.9rem;
+}
+
+.life-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    text-align: center;
+    color: #1f1e1e;
+}
+
+.ls-container {
+    flex: 1;
+    flex-basis: 60%;
+    padding: 0px;
+}
+
+.lifestyle-bg {
+    width: 80%;
+    height: auto;
+    padding: 0px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
 }
 
 
 @media (max-width: 768px) {
-    #lifestyle {
-        display: flex;
-        flex-direction: column;
+    .lifestyle-flex {
+        flex-direction: column-reverse;
         align-items: center;
-        justify-content: center;
-        height: fit-content;
-        padding: 10px 10px;
-
+        padding: 0px 0px;
     }
 
-    #lifestyle img {
-        width: 60%;
-
+    .lifestyle-content,
+    .ls-container {
+        max-width: 100%;
+        padding: 10px;
+        text-align: center;
     }
 
-    #lifestyle h2 {
-        font-size: 17px;
+    .lifestyle-bg {
+        width: 100%;
+    }
+
+    .lifestyle-content h2 {
+        font-size: 1rem;
         font-weight: 700;
-        margin-bottom: 10px;
+        /* margin-bottom: 10px; */
     }
 
-    #lifestyle p {
-        font-size: 13px;
+    .sub-text {
+        font-size: 1rem;
         font-weight: 400;
-        margin-bottom: 10px;
     }
 }
-
 
 
 
@@ -832,6 +901,7 @@ section {
     color: white;
     padding: 0;
     text-align: center;
+    overflow-y: hidden;
 
 }
 
@@ -857,13 +927,13 @@ section {
 }
 
 .contact-logo img {
-    width: 35%;
+    width: 40%;
     height: 20%;
     /* margin-bottom: 20px; */
 }
 
 #bag-quotes p {
-    font-size: 12px;
+    font-size: 13px;
     color: #C1D4CB;
 
 }
@@ -895,7 +965,7 @@ section {
 }
 
 .social-icons a i {
-    font-size: 25px;
+    font-size: 30px;
     color: #000000;
     /* Default icon color */
     transition: color 0.3s ease-in-out;
@@ -912,6 +982,7 @@ section {
 }
 
 .contact-links h4 {
+    font-size: 17px;
     margin-bottom: 15px;
 }
 
@@ -924,7 +995,7 @@ section {
     color: #C1D4CB;
     text-decoration: none;
     transition: color 0.3s;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .contact-links li a:hover {
@@ -949,7 +1020,8 @@ section {
 .contact-footer li a {
     color: white;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 14px;
+    padding-bottom: 10px;
 }
 
 /* Responsive Design */
@@ -983,7 +1055,7 @@ footer {
 }
 
 footer p {
-    font-size: 13px;
+    font-size: 15px;
     color: #c2baba;
 }
 
