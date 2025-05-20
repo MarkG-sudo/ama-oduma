@@ -17,34 +17,34 @@ document.addEventListener("DOMContentLoaded", function () {
     // 🧭 Smooth scroll to section and close menu on link click
     navLinks.forEach(link => {
         link.addEventListener("click", function (event) {
-            event.preventDefault();
-            navMenu.classList.remove("active");
-
             const targetId = this.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-                const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: "smooth"
-                });
+                event.preventDefault();
+                targetSection.scrollIntoView({ behavior: "smooth" });
+                navMenu.classList.remove("active");
             }
+            
         });
     });
 
     // 🌐 Highlight active nav link when scrolling
     function highlightNav() {
-        let scrollPosition = window.scrollY + offset;
+        const scrollPosition = window.scrollY;
 
         sections.forEach((section) => {
             const sectionTop = section.offsetTop - offset;
-            const sectionHeight = section.clientHeight;
+            const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute("id");
 
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            if (
+                scrollPosition >= sectionTop &&
+                scrollPosition < sectionTop + sectionHeight
+            ) {
                 navLinks.forEach((link) => {
                     link.classList.remove("active");
+
                     if (link.getAttribute("href") === `#${sectionId}`) {
                         link.classList.add("active");
                     }
@@ -53,19 +53,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 📡 Run highlight function on scroll
     window.addEventListener("scroll", highlightNav);
-});
 
-// 🍔 Mobile Navigation Toggle and Scroll
-document.addEventListener("DOMContentLoaded", function () {
+    // 🍔 Mobile Navigation Toggle and Scroll
     const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
+    const mobileNavLinks = document.querySelector(".nav-links");
     const links = document.querySelectorAll(".nav-links a");
 
     // 🍔 Open/close menu on hamburger click
     hamburger.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
+        mobileNavLinks.classList.toggle("active");
         document.body.classList.toggle("nav-open");
     });
 
@@ -81,11 +78,33 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (window.innerWidth <= 768) {
-                navLinks.classList.remove("active");
+                mobileNavLinks.classList.remove("active");
                 document.body.classList.remove("nav-open");
             }
         });
     });
+    
+
+    // ✨ Fortune Text Updater
+    const fortunes = [
+        "Elegance is timeless, sustainability is priceless.",
+        "Carry the culture, wear the legacy.",
+        "Your bag, your story, your statement.",
+        "Sustainability never goes out of style.",
+        "Crafted with heart, carried with pride."
+    ];
+
+    const fortuneText = document.getElementById("fortune-text");
+
+    function updateFortune() {
+        fortuneText.innerText = fortunes[Math.floor(Math.random() * fortunes.length)];
+    }
+
+    // 🎉 First fortune
+    updateFortune();
+
+    // 🔄 Change every 10 seconds
+    setInterval(updateFortune, 10000);
 });
 
 // 🖼️ Gallery Carousel Logic
@@ -195,29 +214,6 @@ function prevSlide() {
     currentIndex--;
     updateSlidePosition();
 }
-
-// ✨ Fortune Text Updater
-document.addEventListener("DOMContentLoaded", function () {
-    const fortunes = [
-        "Elegance is timeless, sustainability is priceless.",
-        "Carry the culture, wear the legacy.",
-        "Your bag, your story, your statement.",
-        "Sustainability never goes out of style.",
-        "Crafted with heart, carried with pride."
-    ];
-
-    const fortuneText = document.getElementById("fortune-text");
-
-    function updateFortune() {
-        fortuneText.innerText = fortunes[Math.floor(Math.random() * fortunes.length)];
-    }
-
-    // 🎉 First fortune
-    updateFortune();
-
-    // 🔄 Change every 10 seconds
-    setInterval(updateFortune, 10000);
-});
 
 // 🔝 Scroll to Top Button
 const scrollBtn = document.getElementById("scrollToTopBtn");

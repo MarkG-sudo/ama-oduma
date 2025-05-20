@@ -274,6 +274,7 @@
             max-width: 1200px;
             margin: 60px auto;
             padding: 0 20px;
+            
         }
 
         .about-content p {
@@ -324,6 +325,7 @@
 =========================== */
         .dna {
             display: flex;
+            
         }
 
         .one-arm {
@@ -794,9 +796,7 @@
         <nav>
             <div class="logo"><a href="./index.html">Ama Oduma</a></div>
             <ul class="nav-links">
-                <li><a href="#products">Products</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="./Contact.html">Contact</a></li>
+                <li><a href="./Contact.html" target="_blank">Contact</a></li>
                 <li class="bag-icon">
                     <a href="#cart">
                         <i class="fas fa-shopping-bag"></i> <!-- Font Awesome shopping bag -->
@@ -952,10 +952,10 @@
                 <div>
                     <h4>CUSTOMER SERVICE</h4>
                     <ul>
-                        <li><a href="./Shipping & Delivery Info.html">Shipping & Delivery Info</a></li>
-                        <li><a href="./Quantity Order.html">Large Volume Orders</a></li>
-                        <li><a href="./Bag Care.html">Bag Care</a></li>
-                        <li><a href="./FAQs.html">FAQ</a></li>
+                        <li><a href="./Shipping & Delivery Info.html" target="_blank">Shipping & Delivery Info</a></li>
+                        <li><a href="./Quantity Order.html" target="_blank">Large Volume Orders</a></li>
+                        <li><a href="./Bag Care.html" target="_blank">Bag Care</a></li>
+                        <li><a href="./FAQs.html" target="_blank">FAQ</a></li>
 
                     </ul>
                 </div>
@@ -968,7 +968,7 @@
                 <div>
                     <h4>Fast Lane</h4>
                     <ul>
-                        <li><a href="./Emergency Order.html">Emergency Order</a></li>
+                        <li><a href="./Emergency Order.html" target="_blank">Emergency Order</a></li>
 
                     </ul>
                 </div>
@@ -987,9 +987,9 @@
 
             <div class="contact-footer">
                 <ul>
-                    <li><a href="./cookie policy.html">Cookies policy</a></li>
-                    <li><a href="./Terms&Conditions.html">General terms and conditions</a></li>
-                    <li><a href="./privacy policy.html">Privacy policy</a></li>
+                    <li><a href="./cookie policy.html" target="_blank">Cookies policy</a></li>
+                    <li><a href="./Terms&Conditions.html" target="_blank">General terms and conditions</a></li>
+                    <li><a href="./privacy policy.html" target="_blank">Privacy policy</a></li>
 
                 </ul>
             </div>
@@ -1004,136 +1004,224 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver(
-                (entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("show");
-                            obs.unobserve(entry.target); // Stop observing once revealed
-                        }
-                    });
-                },
-                {
-                    threshold: 0.2 // Trigger when 20% is visible
-                }
-            );
-
-            // Select all target sections (both .story-section and .fade-in)
-            const elementsToObserve = document.querySelectorAll(".story-section, .fade-in");
-            elementsToObserve.forEach(el => observer.observe(el));
-        });
-
-        // 🔁 Wait until the DOM is fully loaded
-        document.addEventListener("DOMContentLoaded", function () {
-            // 🔗 Get references for menu toggle, navigation links, and page sections
-            const menuToggle = document.querySelector(".menu-toggle");
-            const navMenu = document.querySelector("nav ul");
-            const navLinks = document.querySelectorAll("nav ul li a");
-            const sections = document.querySelectorAll("section");
-
-            // 📏 Get height of header for offset
-            const offset = document.querySelector("header").offsetHeight - 10;
-
-            // 🍔 Toggle mobile menu when hamburger is clicked
-            menuToggle.addEventListener("click", function () {
-                navMenu.classList.toggle("active");
+            // ✨ REVEAL ON SCROLL
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2
             });
 
-            // 🧭 Smooth scroll to section and close menu on link click
+            const elementsToObserve = document.querySelectorAll(".story-section, .fade-in");
+            elementsToObserve.forEach(el => observer.observe(el));
+
+            // 🍔 MOBILE NAVIGATION TOGGLE
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navMenu = document.querySelector("nav ul");
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener("click", () => {
+                    navMenu.classList.toggle("active");
+                });
+            }
+
+            // 🧭 SMOOTH SCROLL AND ACTIVE LINK HIGHLIGHT
+            const navLinks = document.querySelectorAll("nav ul li a");
+            const sections = document.querySelectorAll("section");
+            const header = document.querySelector("header");
+            const offset = header ? header.offsetHeight - 10 : 60;
+
             navLinks.forEach(link => {
-                link.addEventListener("click", function (event) {
-                    event.preventDefault();
-                    navMenu.classList.remove("active");
-
-                    const targetId = this.getAttribute("href").substring(1);
+                link.addEventListener("click", e => {
+                    const targetId = link.getAttribute("href").substring(1);
                     const targetSection = document.getElementById(targetId);
-
                     if (targetSection) {
-                        const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - offset;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: "smooth"
-                        });
+                        e.preventDefault();
+                        targetSection.scrollIntoView({ behavior: "smooth" });
+                        navMenu?.classList.remove("active");
                     }
                 });
             });
 
-            // 🌐 Highlight active nav link when scrolling
             function highlightNav() {
-                let scrollPosition = window.scrollY + offset;
-
-                sections.forEach((section) => {
-                    const sectionTop = section.offsetTop - offset;
-                    const sectionHeight = section.clientHeight;
-                    const sectionId = section.getAttribute("id");
-
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        navLinks.forEach((link) => {
-                            link.classList.remove("active");
-                            if (link.getAttribute("href") === `#${sectionId}`) {
-                                link.classList.add("active");
-                            }
+                const scrollPosition = window.scrollY;
+                sections.forEach(section => {
+                    const top = section.offsetTop - offset;
+                    const height = section.offsetHeight;
+                    if (scrollPosition >= top && scrollPosition < top + height) {
+                        const id = section.getAttribute("id");
+                        navLinks.forEach(link => {
+                            link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
                         });
                     }
                 });
             }
-
-            // 📡 Run highlight function on scroll
             window.addEventListener("scroll", highlightNav);
-        });
 
-        // 🍔 Mobile Navigation Toggle and Scroll
-        document.addEventListener("DOMContentLoaded", function () {
+            // 📱 MOBILE NAV ICON AND LINKS
             const hamburger = document.querySelector(".hamburger");
-            const navLinks = document.querySelector(".nav-links");
-            const links = document.querySelectorAll(".nav-links a");
+            const mobileNavLinks = document.querySelector(".nav-links");
+            const mobileLinks = document.querySelectorAll(".nav-links a");
 
-            // 🍔 Open/close menu on hamburger click
-            hamburger.addEventListener("click", function () {
-                navLinks.classList.toggle("active");
-                document.body.classList.toggle("nav-open");
-            });
+            if (hamburger && mobileNavLinks) {
+                hamburger.addEventListener("click", () => {
+                    mobileNavLinks.classList.toggle("active");
+                    document.body.classList.toggle("nav-open");
+                });
+            }
 
-            // 📍 Smooth scroll and close nav (on mobile)
-            links.forEach(link => {
-                link.addEventListener("click", (event) => {
-                    event.preventDefault();
+            mobileLinks.forEach(link => {
+                link.addEventListener("click", e => {
                     const targetId = link.getAttribute("href").substring(1);
                     const targetSection = document.getElementById(targetId);
-
                     if (targetSection) {
+                        e.preventDefault();
                         targetSection.scrollIntoView({ behavior: "smooth" });
                     }
-
                     if (window.innerWidth <= 768) {
-                        navLinks.classList.remove("active");
+                        mobileNavLinks?.classList.remove("active");
                         document.body.classList.remove("nav-open");
                     }
                 });
             });
-        });
 
-        // 🔝 Scroll to Top Button
-        const scrollBtn = document.getElementById("scrollToTopBtn");
+            // 🔮 FORTUNE TEXT UPDATER
+            const fortunes = [
+                "Elegance is timeless, sustainability is priceless.",
+                "Carry the culture, wear the legacy.",
+                "Your bag, your story, your statement.",
+                "Sustainability never goes out of style.",
+                "Crafted with heart, carried with pride."
+            ];
 
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-                scrollBtn.classList.add("show");
-            } else {
-                scrollBtn.classList.remove("show");
+            const fortuneText = document.getElementById("fortune-text");
+
+            function updateFortune() {
+                if (fortuneText) {
+                    fortuneText.innerText = fortunes[Math.floor(Math.random() * fortunes.length)];
+                }
+            }
+
+            updateFortune();
+            setInterval(updateFortune, 10000);
+
+            // 🖼️ GALLERY CAROUSEL
+            const galleryGrid = document.querySelector(".gallery-grid");
+            const galleryContainer = document.querySelector(".gallery-container");
+            const dotsContainer = document.querySelector(".gallery-dots");
+            const originalSlides = document.querySelectorAll(".gallery-item");
+
+            if (galleryGrid && galleryContainer && dotsContainer && originalSlides.length > 0) {
+                let currentIndex = 1;
+                const totalSlides = originalSlides.length;
+
+                // Clone first and last
+                const firstClone = originalSlides[0].cloneNode(true);
+                const lastClone = originalSlides[totalSlides - 1].cloneNode(true);
+                galleryGrid.appendChild(firstClone);
+                galleryGrid.insertBefore(lastClone, originalSlides[0]);
+
+                let updatedSlides = document.querySelectorAll(".gallery-item");
+                const newTotalSlides = updatedSlides.length;
+
+                // Initial position
+                galleryGrid.style.transform = `translateX(-100%)`;
+
+                // Create dots
+                originalSlides.forEach((_, i) => {
+                    const dot = document.createElement("span");
+                    dot.classList.add("gallery-dot");
+                    dot.dataset.index = i;
+                    dotsContainer.appendChild(dot);
+                });
+
+                const dots = document.querySelectorAll(".gallery-dot");
+                if (dots.length > 0) dots[0].classList.add("active");
+
+                function updateSlidePosition() {
+                    galleryGrid.style.transition = "transform 0.5s ease-in-out";
+                    galleryGrid.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle("active", i === currentIndex - 1);
+                    });
+
+                    setTimeout(() => {
+                        if (currentIndex === newTotalSlides - 1) {
+                            galleryGrid.style.transition = "none";
+                            currentIndex = 1;
+                            galleryGrid.style.transform = `translateX(-100%)`;
+                        } else if (currentIndex === 0) {
+                            galleryGrid.style.transition = "none";
+                            currentIndex = totalSlides;
+                            galleryGrid.style.transform = `translateX(-${currentIndex * 100}%)`;
+                        }
+                    }, 500);
+                }
+
+                function nextSlide() {
+                    if (currentIndex >= newTotalSlides - 1) return;
+                    currentIndex++;
+                    updateSlidePosition();
+                }
+
+                function prevSlide() {
+                    if (currentIndex <= 0) return;
+                    currentIndex--;
+                    updateSlidePosition();
+                }
+
+                // Swipe support
+                let touchStartX = 0, touchEndX = 0;
+                const swipeThreshold = 50;
+
+                galleryContainer.addEventListener("touchstart", e => {
+                    touchStartX = e.touches[0].clientX;
+                });
+
+                galleryContainer.addEventListener("touchmove", e => {
+                    touchEndX = e.touches[0].clientX;
+                });
+
+                galleryContainer.addEventListener("touchend", () => {
+                    const swipeDistance = touchStartX - touchEndX;
+                    if (swipeDistance > swipeThreshold) nextSlide();
+                    else if (swipeDistance < -swipeThreshold) prevSlide();
+                });
+
+                // Dot navigation
+                dots.forEach(dot => {
+                    dot.addEventListener("click", () => {
+                        currentIndex = parseInt(dot.dataset.index) + 1;
+                        updateSlidePosition();
+                    });
+                });
+
+                // Prev/Next buttons
+                const prevBtn = document.querySelector(".prev");
+                const nextBtn = document.querySelector(".next");
+
+                prevBtn?.addEventListener("click", prevSlide);
+                nextBtn?.addEventListener("click", nextSlide);
+            }
+
+            // 🔝 SCROLL TO TOP BUTTON
+            const scrollBtn = document.getElementById("scrollToTopBtn");
+            if (scrollBtn) {
+                window.addEventListener("scroll", () => {
+                    scrollBtn.classList.toggle("show", window.scrollY > 300);
+                });
+
+                scrollBtn.addEventListener("click", () => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
             }
         });
-
-        scrollBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-
-
     </script>
-
+    
 
 </body>
 
