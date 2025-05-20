@@ -12,18 +12,23 @@
 </head>
 
 <body>
-<header>
-    <nav>
-        <div class="logo">Ama Oduma</div>
-        <ul class="nav-links">
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
-    </nav>
-</header>
+    <header>
+        <nav>
+            <div class="logo"><a href="./index.html">Ama Oduma</a></div>
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="./Contact.html">Contact</a></li>
+                <li class="bag-icon">
+                    <a href="#cart">
+                        <i class="fas fa-shopping-bag"></i> <!-- Font Awesome shopping bag -->
+                        <span class="item-count">0</span>
+                    </a>
+                </li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+        </nav>
+    </header>
 
 
 
@@ -31,7 +36,7 @@
         <h1>Welcome to <span class="mobile-break">Ama Oduma</span></h1>
         <p>Timeless quality, Crafted with care !</p>
         <div id="brand-logo">
-            <img src="./assets/images/ama-oduma-cl-symp.png" alt="">
+            <img src="./assets/images/AMA-Logo-Transparent.png" alt="">
         </div>
     </section>
 
@@ -39,7 +44,7 @@
         <div class="about-content">
             <h2>THE CRAFT <br> OF <br> AMA ODUMA</h2>
             <p class="sub-text">Style of Pride</p>
-            <a href="#" class="btn">Tell Your Story</a>
+            <a href="/about.html" class="btn">Our Story <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="about-image">
             <img src="./assets/images/about_tote-clear.png" alt="Luxury Bag">
@@ -87,6 +92,11 @@
         </div>
     </section>
 
+<section id="ad-section">
+    <div class="ad-container">
+        <a href="./Quantity Order.html"><img src="./assets/images/ama oduma - gift bag ad.png" alt="Gift bag ad" class="ad-image"></a>
+    </div>
+</section>
 
 
     <section id="assurance">
@@ -96,34 +106,35 @@
                 <img src="./assets/images/design-research-svgrepo-com.svg" alt="About us">
                 <h3>Timeless Design</h3>
                 <p>Blending African heritage with modern elegance.</p>
-                
+
             </div>
             <div class="assurance-card">
                 <img src="./assets/images/sewing-machine-sew-svgrepo-com.svg" alt="Our Craftsmanship">
                 <h3>Our Craftsmanship</h3>
                 <p>Handcrafted with precision and care for lasting quality.</p>
-                
+
             </div>
             <div class="assurance-card">
                 <img src="./assets/images/loop-infinity-svgrepo-com.svg" alt="Sustainability">
                 <h3>Guaranteed Durability</h3>
                 <p>Tested for strength to support your daily adventures.</p>
-                
+
             </div>
         </div>
     </section>
-    
-<section id="lifestyle" class="image-lifestyle">
-    <div class="lifestyle-flex">
-        <div class="lifestyle-content">
-            <h2>Made to carry more than just your essentials ...</h2>
-            <p class="life-text"> — carry <span>culture, color,</span> & <span>character</span>.</p>
+
+    <section id="lifestyle" class="image-lifestyle">
+        <div class="lifestyle-flex">
+           
+            <div class="ls-container">
+                <img src="./assets/images/AO tote.png" alt="Luxury Bag" class="lifestyle-bg" />
+            </div>
+            <div class="lifestyle-content">
+                <h2>Made to carry more than just your essentials ...</h2>
+                <p class="life-text"> — carry <span>culture, color,</span> & <span>character</span>.</p>
+            </div>
         </div>
-        <div class="ls-container">
-            <img src="./assets/images/AO tote.png" alt="Luxury Bag" class="lifestyle-bg" />
-        </div>
-    </div>
-</section>
+    </section>
 
 
 
@@ -150,14 +161,14 @@
                         <img src="./assets/images/ABOUT-TOTE-EX.png" alt="Client Image">
                         <p>Guaranteed quality and satisfaction.</p>
                     </div>
-                    
+
 
                 </div>
             </div>
             <button class="gallery-arrow prev">&#10094;</button>
             <button class="gallery-arrow next">&#10095;</button>
         </div>
-        <div class="gallery-dots"></div> 
+        <div class="gallery-dots"></div>
     </section>
 
 
@@ -169,13 +180,14 @@
                 <img src="./assets/images/AMA_ODUMA-footer.png " alt="Ama Oduma logo">
             </div>
 
-            <div class="contact-links">
+            <div class="service-links">
                 <div>
                     <h4>CUSTOMER SERVICE</h4>
                     <ul>
-                        <li><a href="#">Products & Sales Information</a></li>
-                        <li><a href="#">Bag Care</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="./Shipping & Delivery Info.html">Shipping & Delivery Info</a></li>
+                        <li><a href="./Quantity Order.html">Large Volume Orders</a></li>
+                        <li><a href="./Bag Care.html">Bag Care</a></li>
+                        <li><a href="./FAQs.html">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
@@ -187,7 +199,8 @@
                 <div>
                     <h4>Fast Lane</h4>
                     <ul>
-                        <li><a href="#">Emergency Order</a></li>
+                        <li><a href="./Emergency Order.html">Emergency Order</a></li>
+                        
                     </ul>
                 </div>
                 <div id="bag-quotes">
@@ -205,10 +218,10 @@
 
             <div class="contact-footer">
                 <ul>
-                    <li><a href="#">Cookies policy</a></li>
-                    <li><a href="#">General terms and conditions</a></li>
-                    <li><a href="#">Privacy policy</a></li>
-                    <li><a href="#">Cookies</a></li>
+                    <li><a href="./cookie policy.html">Cookies policy</a></li>
+                    <li><a href="./Terms&Conditions.html">General terms and conditions</a></li>
+                    <li><a href="./privacy policy.html">Privacy policy</a></li>
+                    
                 </ul>
             </div>
         </div>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thank You – Ama Oduma</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Nunito:wght@300;400;600&family=Libre+Baskerville:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: black;
+            --secondary-color: white;
+            --highlight-color: #61800c;
+            --text-gray: gray;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            color: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+            text-align: center;
+            animation: fadeIn 1.2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        img.logo {
+            max-width: 140px;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #444;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .button {
+            margin-top: 2rem;
+            padding: 0.8rem 1.6rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #333;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Logo (Replace src with your logo path) -->
+    <img src="images/logo.png" alt="Ama Oduma Logo" class="logo" />
+
+    <h1>Thank You for Your Order!</h1>
+    <p>We’ve received your request and will get in touch shortly to confirm the details. Your support helps us grow
+        sustainable fashion with purpose and pride in African prints.</p>
+    <a class="button" href="index.html">Return to Homepage</a>
+
+</body>
+
+</html>

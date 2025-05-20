@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bag My Style | Custom Orders</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Nunito:wght@300;400;600&family=Libre+Baskerville:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: black;
+            --secondary-color: white;
+            --highlight-color: #61800c;
+            --text-gray: gray;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fcfcf9;
+            color: #333;
+        }
+
+        header {
+            background-color: #1b1b1b;
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        label {
+            display: block;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            margin-top: 2rem;
+            background-color: #1b1b1b;
+            color: white;
+            border: none;
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #1b1b1b;
+            color: white;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Made for Many</h1>
+        <p>Submit your large volume order for our bags</p>
+    </header>
+
+    <main>
+        <form action="https://formspree.io/f/xblobdrn" method="POST">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="contact">Contact Info (Phone or Email) *</label>
+            <input type="text" id="contact" name="contact" required>
+
+            <label for="quantity">Quantity *</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+
+            <label for="date">Preferred Delivery Date *</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="notes">Optional Description or Style Preferences</label>
+            <textarea id="notes" name="notes"
+                placeholder="E.g. I want mixed prints or tote-style with zippers..."></textarea>
+
+                <input type="hidden" name="_next" value=".">
+
+
+            <button type="submit">Submit Order Request</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ama Oduma — Custom Crafted. Sustainably Yours.</p>
+    </footer>
+</body>
+
+</html>

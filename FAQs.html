@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ | Ama Oduma</title>
+    <style>
+
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Nunito:wght@300;400;600&family=Libre+Baskerville:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: black;
+            --secondary-color: white;
+            --highlight-color: #61800c;
+            --text-gray: gray;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 0;
+        }
+
+        .faq-item h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .faq-item p {
+            margin: 0;
+            display: none;
+        }
+
+        .faq-item.open p {
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers about our sustainable bags.</p>
+    </header>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <h3>What materials are used in your bags?</h3>
+            <p>Our bags are made using authentic African wax print fabrics (Ankara), cotton lining, and eco-friendly
+                reinforcements to ensure both sustainability and durability.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I care for my African print bag?</h3>
+            <p>Spot clean with a damp cloth and mild soap. Do not machine wash. Store in a cool, dry place away from
+                direct sunlight to preserve the vibrancy of the fabric.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do you offer custom orders?</h3>
+            <p>Yes! You can place custom orders for bulk or personal use. Visit our “Order in Quantities” page to get
+                started.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How long does it take to receive my order?</h3>
+            <p>Standard orders are processed within 3–5 business days. Delivery time depends on your location and
+                shipping option chosen.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do you ship internationally?</h3>
+            <p>Yes, we ship worldwide! Shipping costs and delivery times may vary depending on your country.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I return or exchange an item?</h3>
+            <p>We accept returns or exchanges within 14 days of delivery, as long as the item is unused and in original
+                condition.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How sustainable are your products?</h3>
+            <p>All our bags are handcrafted using ethically sourced fabrics and minimal-waste techniques. Sustainability
+                is a core value at Ama Oduma.</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Ama Oduma. All rights reserved.
+    </footer>
+
+    <script>
+        // FAQ toggle logic
+        document.querySelectorAll('.faq-item h3').forEach((header) => {
+            header.addEventListener('click', () => {
+                header.parentElement.classList.toggle('open');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

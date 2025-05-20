@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us – Ama Oduma</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Nunito:wght@300;400;600&family=Libre+Baskerville:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: black;
+            --secondary-color: white;
+            --highlight-color: #61800c;
+            --text-gray: gray;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 2rem;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .form-section,
+        .info-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input,
+        textarea {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button {
+            background-color: var(--highlight-color);
+            color: var(--secondary-color);
+            padding: 0.8rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #4d660a;
+        }
+
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-section h3 {
+            margin-top: 0;
+        }
+
+        .contact-block {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-block p {
+            margin: 0.3rem 0;
+            color: var(--text-gray);
+        }
+
+        .illustration {
+            margin-top: 2rem;
+        }
+
+        .illustration img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #f4f4f4;
+            color: var(--text-gray);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Get In Touch</h1>
+        <p>We’d love to hear from you – questions, custom orders, feedback or just a hello!</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Contact Form Section -->
+        <div class="form-section">
+            <h2>Send Us a Message</h2>
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+                <input type="text" name="name" placeholder="Your Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="tel" name="phone" placeholder="Phone Number (optional)">
+                <textarea name="message" placeholder="Your Message..." required></textarea>
+                <button type="submit">Submit Message</button>
+                <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+            </form>
+        </div>
+
+        <!-- Contact Info Section -->
+        <div class="info-section">
+            <h2>Contact Details</h2>
+
+            <div class="contact-block">
+                <h3>📍 Location</h3>
+                <p>Accra, Ghana</p>
+                <p>Pick-up by appointment only</p>
+            </div>
+
+            <div class="contact-block">
+                <h3>📧 Email</h3>
+                <p>info@amaoduma.com</p>
+                <p>orders@amaoduma.com</p>
+            </div>
+
+            <div class="contact-block">
+                <h3>📞 Phone</h3>
+                <p>+233 50 123 4567</p>
+                <p>+233 55 765 4321</p>
+            </div>
+
+            <div class="illustration">
+                <img src="https://via.placeholder.com/600x300?text=Contact+Us+Illustration" alt="Contact Illustration">
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2025 Ama Oduma. Crafted with care in Ghana.
+    </footer>
+
+</body>
+
+</html>

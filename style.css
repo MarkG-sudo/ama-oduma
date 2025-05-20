@@ -1,5 +1,6 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Nunito:wght@300;400;600&family=Libre+Baskerville:wght@400;700&display=swap');
+
 :root {
     --primary-color: black;
     --secondary-color: white;
@@ -70,10 +71,16 @@ nav {
    ✅ LOGO STYLING
 ============================= */
 .logo {
+
     font-family: 'Libre Baskerville', serif;
     font-size: 24px;
     color: white;
     white-space: nowrap;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #ffffff;
 }
 
 /* =============================
@@ -94,6 +101,7 @@ nav {
         font-size: 20px;
     }
 }
+
 /* =============================
    ✅ MENU TOGGLE (HAMBURGER)
 ============================= */
@@ -165,7 +173,7 @@ nav ul a {
 /* =============================
    ✅ NAV LINK ANIMATIONS
 ============================= */
-nav ul a::after {
+/* nav ul a::after {
     content: '';
     position: absolute;
     left: 0;
@@ -175,27 +183,27 @@ nav ul a::after {
     background: #2dce60;
     transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
-}
+} */
 
 nav ul a:hover {
     color: #2dce60;
     transform: translateY(-2px);
 }
 
-nav ul a:hover::after {
+/* nav ul a:hover::after {
     transform: scaleX(1);
-}
+} */
 
 nav ul a:active {
     color: #2dce60;
     transform: scale(0.95);
 }
 
-nav ul a.active {
+/* nav ul a.active {
     color: #2dce60;
     font-weight: bold;
     border-bottom: 2px solid #2dce60;
-}
+} */
 
 
 
@@ -215,7 +223,7 @@ section {
     justify-content: center;
     align-items: center;
     background: var(--primary-color);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.233), rgba(0, 0, 0, 0.253)), url('./assets/images/overview.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.623), rgba(0, 0, 0, 0.623)), url('./assets/images/outdoor\ shoot.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -244,13 +252,13 @@ section {
     max-width: 70%;
     line-height: 1.4;
     margin-bottom: 20px;
-   
+
 }
 
 #brand-logo {
     align-content: end;
-    width: 350px;
-    
+    width: 120px;
+
 
 }
 
@@ -455,6 +463,7 @@ section {
 #products h2 {
     font-size: 28px;
     margin-bottom: 60px;
+    color: #133b1f;
 }
 
 #products .product-list {
@@ -522,6 +531,37 @@ section {
         max-width: 100%;
         /* Expands to fit mobile screens */
     }
+}
+
+#ad-section {
+    padding: 40px 20px;
+    background-color: #F5F1EE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.ad-container {
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.ad-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.ad-image:hover {
+    transform: scale(1.02);
+    cursor: pointer;
 }
 
 
@@ -733,8 +773,9 @@ section {
 
 /* 🌍 Product Assurance Section */
 #assurance {
-    background: #F8F6F2;
+    background: #ffffff;
     padding: 60px 20px;
+    height: 60vh;
     text-align: center;
     /* height: 70vh; */
     overflow-x: hidden;
@@ -743,10 +784,12 @@ section {
 #assurance h2 {
     font-size: 28px;
     margin-bottom: 60px;
+    color: #133b1f;
 }
 
 /* 🛠 Grid Layout */
 .assurance-container {
+    padding-top: 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
@@ -811,14 +854,14 @@ section {
 
 .image-lifestyle {
     padding: 30px 30px;
-    background-color: #F8F6F2;
+    background-color: #F5F1EE;
 }
 
 .lifestyle-flex {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0px;    
+    padding: 0px;
 }
 
 
@@ -832,7 +875,7 @@ section {
 .lifestyle-content h2 {
     font-size: 1.3rem;
     margin-bottom: 10px;
-    color: #222;
+    color: #133B1F;
 }
 
 
@@ -971,34 +1014,35 @@ section {
     transition: color 0.3s ease-in-out;
 }
 
-.contact-links {
+.service-links {
     display: flex;
     justify-content: space-around;
     width: 100%;
     max-width: 1000px;
     margin-bottom: 20px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #d4a24f;
     border-radius: 10%;
 }
 
-.contact-links h4 {
+.service-links h4 {
     font-size: 17px;
     margin-bottom: 15px;
 }
 
-.contact-links ul {
+.service-links ul {
     list-style: none;
     padding: 0;
 }
 
-.contact-links li a {
+.service-links li a {
     color: #C1D4CB;
     text-decoration: none;
     transition: color 0.3s;
     font-size: 13px;
 }
 
-.contact-links li a:hover {
+.service-links li a:hover {
     color: #ddd;
 }
 
@@ -1026,6 +1070,15 @@ section {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
+    .service-links {
+        flex-direction: column;
+        align-items: center;
+        border-bottom: none;
+
+    }
+
+
     .contact-links {
         flex-direction: column;
         align-items: center;

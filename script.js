@@ -1,15 +1,20 @@
+// 🔁 Wait until the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
+    // 🔗 Get references for menu toggle, navigation links, and page sections
     const menuToggle = document.querySelector(".menu-toggle");
     const navMenu = document.querySelector("nav ul");
     const navLinks = document.querySelectorAll("nav ul li a");
     const sections = document.querySelectorAll("section");
-    const offset = document.querySelector("header").offsetHeight - 10; // Adjust offset for sticky header
 
+    // 📏 Get height of header for offset
+    const offset = document.querySelector("header").offsetHeight - 10;
+
+    // 🍔 Toggle mobile menu when hamburger is clicked
     menuToggle.addEventListener("click", function () {
         navMenu.classList.toggle("active");
     });
 
-    // Close menu when a link is clicked and scroll smoothly
+    // 🧭 Smooth scroll to section and close menu on link click
     navLinks.forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
@@ -28,11 +33,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // 🌐 Highlight active nav link when scrolling
     function highlightNav() {
-        let scrollPosition = window.scrollY + offset; // Adjust scroll position
+        let scrollPosition = window.scrollY + offset;
 
         sections.forEach((section) => {
-            const sectionTop = section.offsetTop - offset; // Ensure section aligns correctly
+            const sectionTop = section.offsetTop - offset;
             const sectionHeight = section.clientHeight;
             const sectionId = section.getAttribute("id");
 
@@ -47,67 +53,62 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // 📡 Run highlight function on scroll
     window.addEventListener("scroll", highlightNav);
 });
 
-
-
-
-
-
+// 🍔 Mobile Navigation Toggle and Scroll
 document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
     const links = document.querySelectorAll(".nav-links a");
 
-    // 🟢 Toggle menu on click
+    // 🍔 Open/close menu on hamburger click
     hamburger.addEventListener("click", function () {
         navLinks.classList.toggle("active");
-        document.body.classList.toggle("nav-open"); // Prevent scrolling
+        document.body.classList.toggle("nav-open");
     });
 
-    // 🔵 Close menu when a link is clicked (only on mobile)
+    // 📍 Smooth scroll and close nav (on mobile)
     links.forEach(link => {
         link.addEventListener("click", (event) => {
-            event.preventDefault(); // Prevent default jump
+            event.preventDefault();
             const targetId = link.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-                targetSection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll
+                targetSection.scrollIntoView({ behavior: "smooth" });
             }
 
-            if (window.innerWidth <= 768) { 
+            if (window.innerWidth <= 768) {
                 navLinks.classList.remove("active");
-                document.body.classList.remove("nav-open"); // Restore scrolling
+                document.body.classList.remove("nav-open");
             }
         });
     });
 });
 
-// body
-
-let currentIndex = 1; // Start at the first real image (since we added clones)
+// 🖼️ Gallery Carousel Logic
+let currentIndex = 1;
 const slides = document.querySelectorAll(".gallery-item");
 const totalSlides = slides.length;
 const galleryGrid = document.querySelector(".gallery-grid");
 const galleryContainer = document.querySelector(".gallery-container");
 const dotsContainer = document.querySelector(".gallery-dots");
 
-// Clone first and last slides for seamless looping
+// 🔁 Clone slides for seamless infinite loop
 const firstClone = slides[0].cloneNode(true);
 const lastClone = slides[totalSlides - 1].cloneNode(true);
-
 galleryGrid.appendChild(firstClone);
 galleryGrid.insertBefore(lastClone, slides[0]);
 
-const updatedSlides = document.querySelectorAll(".gallery-item"); // Update slides count
+const updatedSlides = document.querySelectorAll(".gallery-item");
 const newTotalSlides = updatedSlides.length;
 
-// Adjust initial position
+// 📏 Initial slide position
 galleryGrid.style.transform = `translateX(-100%)`;
 
-// Create dots dynamically
+// ⚫ Create navigation dots
 slides.forEach((_, i) => {
     const dot = document.createElement("span");
     dot.classList.add("gallery-dot");
@@ -116,18 +117,19 @@ slides.forEach((_, i) => {
 });
 
 const dots = document.querySelectorAll(".gallery-dot");
-dots[0].classList.add("active"); // First dot active
+dots[0].classList.add("active");
 
+// 🚀 Update slide position and dot
 function updateSlidePosition() {
     galleryGrid.style.transition = "transform 0.5s ease-in-out";
-    const offset = -currentIndex * 100; 
+    const offset = -currentIndex * 100;
     galleryGrid.style.transform = `translateX(${offset}%)`;
 
-    // Update dots (ignore clones)
     dots.forEach((dot, index) => {
         dot.classList.toggle("active", index === currentIndex - 1);
     });
 
+    // 🔁 Loop back if at cloned slide
     setTimeout(() => {
         if (currentIndex === newTotalSlides - 1) {
             galleryGrid.style.transition = "none";
@@ -141,7 +143,7 @@ function updateSlidePosition() {
     }, 500);
 }
 
-// Swipe gestures for mobile
+// 👆 Touch swipe for mobile navigation
 let touchStartX = 0;
 let touchEndX = 0;
 const swipeThreshold = 50;
@@ -164,7 +166,7 @@ galleryContainer.addEventListener("touchend", () => {
     }
 });
 
-// Click event for dots
+// 🔘 Dot navigation
 dots.forEach((dot) => {
     dot.addEventListener("click", () => {
         currentIndex = parseInt(dot.dataset.index) + 1;
@@ -172,7 +174,7 @@ dots.forEach((dot) => {
     });
 });
 
-// Arrows (ensure buttons exist)
+// ⬅️➡️ Prev/Next Buttons
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
 
@@ -181,6 +183,7 @@ if (prevBtn && nextBtn) {
     nextBtn.addEventListener("click", nextSlide);
 }
 
+// ⏩ Slide functions
 function nextSlide() {
     if (currentIndex >= newTotalSlides - 1) return;
     currentIndex++;
@@ -193,8 +196,7 @@ function prevSlide() {
     updateSlidePosition();
 }
 
-
-
+// ✨ Fortune Text Updater
 document.addEventListener("DOMContentLoaded", function () {
     const fortunes = [
         "Elegance is timeless, sustainability is priceless.",
@@ -210,14 +212,14 @@ document.addEventListener("DOMContentLoaded", function () {
         fortuneText.innerText = fortunes[Math.floor(Math.random() * fortunes.length)];
     }
 
-    // Set initial fortune
+    // 🎉 First fortune
     updateFortune();
 
-    // Update fortune every 10 seconds
+    // 🔄 Change every 10 seconds
     setInterval(updateFortune, 10000);
 });
 
-
+// 🔝 Scroll to Top Button
 const scrollBtn = document.getElementById("scrollToTopBtn");
 
 window.addEventListener("scroll", () => {
