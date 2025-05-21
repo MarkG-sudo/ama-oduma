@@ -18,7 +18,7 @@ html {
     overflow-x: hidden;
     max-width: 100%;
     scroll-padding-top: 50px;
-        
+
 }
 
 body {
@@ -241,7 +241,7 @@ section {
     font-size: 40px;
     max-width: 80%;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    margin-top: 170px;
+    /* margin-top: 170px; */
     margin-bottom: 10px;
     justify-content: center;
     /* align-items: center; */
@@ -414,7 +414,7 @@ section {
 
     .about-content {
         text-align: left;
-        width: 40%;
+        width: 80%;
         height: 90x;
     }
 
@@ -423,7 +423,7 @@ section {
     }
 
     .about-image {
-        width: 60%;
+        width: 70%;
         justify-content: center;
     }
 
@@ -431,6 +431,12 @@ section {
         width: 100%;
         height: auto;
         border-radius: 8px;
+    }
+
+    .sub-text {
+        padding: 0px;
+        margin: 0px;
+        text-align: left !important;
     }
 
 
@@ -841,6 +847,18 @@ section {
 
 /* 📱 Responsive Design */
 @media (max-width: 1024px) {
+
+    #assurance {
+        overflow-y: hidden;
+        height: fit-content;
+
+    }
+
+    #assurance h2 {
+        margin-bottom: 0px;
+    }
+
+
     .assurance-container {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -876,9 +894,9 @@ section {
 
 .lifestyle-content h2 {
     font-size: 2rem;
-        font-weight: 600;
-        color: #133b1f;
-        line-height: 1.6;
+    font-weight: 600;
+    color: #133b1f;
+    line-height: 1.6;
 }
 
 
@@ -909,10 +927,18 @@ section {
 
 
 @media (max-width: 768px) {
+
+    .image-lifestyle {
+        overflow-y: hidden;
+
+    }
+
+
     .lifestyle-flex {
         flex-direction: column-reverse;
         align-items: center;
         padding: 0px 0px;
+
     }
 
     .lifestyle-content,
@@ -927,14 +953,17 @@ section {
     }
 
     .lifestyle-content h2 {
-        font-size: 1rem;
+        text-align: left;
+        font-size: 1.4rem;
         font-weight: 700;
-        /* margin-bottom: 10px; */
+        line-height: 1.6;
+        margin-bottom: 13px;
     }
 
     .sub-text {
         font-size: 1rem;
         font-weight: 400;
+        text-align: right;
     }
 }
 

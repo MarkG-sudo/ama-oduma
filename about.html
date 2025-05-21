@@ -25,6 +25,11 @@
 
         }
 
+        html {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -32,6 +37,8 @@
             scroll-behavior: smooth;
             color: #333;
             overflow-x: hidden;
+            max-width: 100%;
+
             /* line-height: 1.6; */
         }
 
@@ -228,8 +235,12 @@
             background-position: center;
             background-repeat: no-repeat;
             text-align: center;
-            padding: 70px 10px;
+            padding: 120px 10px;
             margin-top: 60px;
+            width: 100%;
+            max-width: 100%;
+            top: 0;
+            left: 0;
         }
 
         .hero h1 {
@@ -249,12 +260,10 @@
         @media (max-width: 768px) {
 
             .hero {
-                background-image: url('./assets/images/BANNER.png');
-                background-size: contain;
                 width: 100%;
                 text-align: center;
                 padding: 20px;
-                margin-top: 13px;
+                margin-top: 15px;
             }
 
             .hero h1 {
@@ -274,7 +283,7 @@
             max-width: 1200px;
             margin: 60px auto;
             padding: 0 20px;
-            
+
         }
 
         .about-content p {
@@ -325,8 +334,9 @@
 =========================== */
         .dna {
             display: flex;
-            
+
         }
+
 
         .one-arm {
             flex-basis: 60%;
@@ -416,6 +426,12 @@
 
         /* 📱 About Section - Mobile */
         @media (max-width: 768px) {
+
+            .about-section {
+
+                margin-bottom: 0px;
+            }
+
             .values-list {
                 grid-template-columns: 1fr;
             }
@@ -444,7 +460,7 @@
         }
 
         .story-section h2 {
-            font-size: 22px;
+            font-size: 20px;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
@@ -508,6 +524,22 @@
 
         /* 📱 Story Section - Mobile */
         @media (max-width: 768px) {
+
+            .story-section {
+                padding: 30px 20px;
+
+            }
+
+            .story-section::before {
+                content: "•";
+                display: block;
+                font-size: 2rem;
+                color: #133b1f;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+
             .story-flow {
                 flex-direction: column;
             }
@@ -561,7 +593,7 @@
         /* 📱 Team Sections - Mobile */
         @media (max-width: 768px) {
 
-            
+
             .story-member,
             .team-member {
                 max-width: 140px;
@@ -787,7 +819,7 @@
             visibility: visible;
         }
     </style>
-    
+
 </head>
 
 <body>
@@ -889,7 +921,8 @@
                 </ul>
             </div>
             <div class="story-visual">
-                <img src="./assets/images/medium-shot-black-woman-running-small-business.jpg" alt="Artisan crafting a bag">
+                <img src="./assets/images/medium-shot-black-woman-running-small-business.jpg"
+                    alt="Artisan crafting a bag">
             </div>
         </div>
     </section>
@@ -924,7 +957,8 @@
                 </p>
                 <div class="team-grid">
                     <div class="team-member">
-                        <img src="./assets/images/confident-business-woman-portrait-smiling-face.jpg" alt="Founder portrait">
+                        <img src="./assets/images/confident-business-woman-portrait-smiling-face.jpg"
+                            alt="Founder portrait">
                         <h3>Ama Odoom</h3>
                         <p>Founder & Creative Director</p>
                     </div>
@@ -1221,7 +1255,7 @@
             }
         });
     </script>
-    
+
 
 </body>
 
