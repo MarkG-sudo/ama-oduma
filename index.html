@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
+    <script defer src="hero-slider.js"></script>
+
 </head>
 
 <body>
@@ -32,14 +34,41 @@
 
 
 
-    <section id="hero">
-        <!-- <h1>Welcome to <span class="mobile-break">Ama Oduma</span></h1> -->
-        <h1>Ama Oduma</h1>
-        <p>Timeless quality, Crafted with care !</p>
-        <div id="brand-logo">
-            <img src="./assets/images/AMA-Logo-Transparent.png" alt="">
+    <div class="hero-carousel">
+        <!-- Hero 1: Background image style -->
+        <section class="hero-slide active" id="hero-1">
+            <div class="hero-content">
+                <h1>Ama Oduma</h1>
+                <p>Timeless quality, Crafted with care!</p>
+                <div id="brand-logo">
+                    <img src="./assets/images/AMA-Logo-Transparent.png" alt="Ama Oduma Logo">
+                </div>
+            </div>
+        </section>
+    
+        <!-- Hero 2: Flex layout with text and image -->
+        <section class="hero-slide hero-flex" id="hero-2">
+            <div class="hero-text">
+                <h1>Ama Oduma</h1>
+                <p>Rooted in heritage. Refined for today.</p>
+                <img src="./assets/images/AMA-Logo-Transparent.png" alt="">
+            </div>
+            <div class="hero-image">
+                <img src="./assets/images/overview.png" alt="Ama Oduma Banner">
+            </div>
+        </section>
+    
+        <!-- Arrows -->
+        <button class="hero-nav prev">&#10094;</button>
+        <button class="hero-nav next">&#10095;</button>
+    
+        <!-- Dots -->
+        <div class="hero-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
         </div>
-    </section>
+    </div>
+      
 
     <section id="about">
         <div class="about-content">
