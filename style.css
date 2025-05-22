@@ -342,7 +342,8 @@ section {
     height: 60vh;
     padding: 100px 10%;
     gap: 50px;
-    background-color: #f8f6f2;
+    background-color: #ffffff;
+    /* background-color: #f8f6f2; */
     overflow-y: hidden;
 }
 
@@ -465,13 +466,14 @@ section {
 
 #products {
     padding: 40px 20px;
+    background-color: #1d1d18;
     /* Adds space around the entire section */
 }
 
 #products h2 {
     font-size: 28px;
     margin-bottom: 60px;
-    color: #133b1f;
+    color: #ffffff;
 }
 
 #products .product-list {
@@ -491,7 +493,7 @@ section {
 .product-card {
     padding: 15px;
     /* Shrinks padding slightly */
-    background: var(--secondary-color);
+    background: #1d1d18;
     transition: transform 0.3s ease;
     max-width: 100%;
     /* Shrinks card width */
@@ -503,11 +505,12 @@ section {
 
 .product-card p {
     text-decoration: underline;
+    color: #15b432;
 
 }
 
 .product-card a {
-    color: #6b6666;
+    color: #ffffff;
     text-decoration: none;
     font-size: 13px;
 
@@ -543,7 +546,7 @@ section {
 
 #ad-section {
     padding: 40px 20px;
-    background-color: #F5F1EE;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -571,6 +574,8 @@ section {
     transform: scale(1.02);
     cursor: pointer;
 }
+
+
 
 
 #gallery {
@@ -777,13 +782,38 @@ section {
     }
 }
 
+/* border line */
 
+#assurance::before {
+    content: "";
+    display: block;
+    width: 30%;
+    /* Half the section width */
+    border-top: 2px solid #183F26;
+    margin-left: 0;
+    /* Aligns to the left */
+    margin-bottom: 50px;
+}
+
+#assurance::after {
+    content: "";
+    display: block;
+    width: 30%;
+    /* Half the width */
+    border-bottom: 2px solid #183F26;
+    /* Or use border-top if needed */
+    margin-left: auto;
+    /* Push to right */
+    margin-top: 20px;
+    /* Space from content above */
+    margin-top: 50px;
+}
 
 /* 🌍 Product Assurance Section */
 #assurance {
     background: #ffffff;
     padding: 60px 20px;
-    height: 60vh;
+    height: 70vh;
     text-align: center;
     /* height: 70vh; */
     overflow-x: hidden;
@@ -874,7 +904,7 @@ section {
 
 .image-lifestyle {
     padding: 30px 30px;
-    background-color: #F5F1EE;
+    background-color: #ffffff;
 }
 
 .lifestyle-flex {
