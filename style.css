@@ -188,7 +188,7 @@ nav ul a {
 } */
 
 nav ul a:hover {
-    color: #2dce60;
+    color: #829611;
     transform: translateY(-2px);
 }
 
@@ -197,7 +197,7 @@ nav ul a:hover {
 } */
 
 nav ul a:active {
-    color: #2dce60;
+    color: #829611;
     transform: scale(0.95);
 }
 
@@ -259,13 +259,16 @@ section {
     font-size: 40px;
     margin-bottom: 10px;
     color: #7ED957;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 5px rgba(104, 102, 102, 0.5);
 }
 
 .hero-content p {
     font-family: 'Nunito', sans-serif;
     font-size: 20px;
     margin-bottom: 20px;
+    color: #fff;
+    /* Optional: makes it stand out more */
+    text-shadow: 2.5px 2.5px 4px rgba(0, 0, 0, 0.5);
 }
 
 #brand-logo {
@@ -665,8 +668,7 @@ section {
 }
 
 
-
-
+/* Gallery Section */
 #gallery {
     height: 80vh;
     padding: 50px 20px;
@@ -773,9 +775,8 @@ section {
     /* Keeps border visible */
 }
 
-
 /* Arrows placed outside the wrapper */
-.gallery-arrow {
+.gallery-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -795,12 +796,12 @@ section {
 }
 
 /* Moves arrows outside the wrapper */
-.prev {
+.gallery-nav.prev {
     left: -70px;
     /* Moves it further out */
 }
 
-.next {
+.gallery-nav.next {
     right: -70px;
     /* Moves it further out */
 }
@@ -814,7 +815,7 @@ section {
 
 /* Hide arrows and fix mobile layout */
 @media (max-width: 768px) {
-    .gallery-arrow {
+    .gallery-nav {
         display: none;
         /* Hide arrows on mobile */
     }
@@ -826,7 +827,6 @@ section {
         font-weight: 600;
         font-size: 1.1rem;
     }
-
 
     .gallery-container {
         overflow: hidden;

@@ -170,112 +170,107 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // 🖼️ Gallery Carousel Logic
-let currentIndex = 1;
-const slides = document.querySelectorAll(".gallery-item");
-const totalSlides = slides.length;
+let galleryIndex = 1;
+const gallerySlides = document.querySelectorAll(".gallery-item");
+const galleryTotal = gallerySlides.length;
 const galleryGrid = document.querySelector(".gallery-grid");
 const galleryContainer = document.querySelector(".gallery-container");
-const dotsContainer = document.querySelector(".gallery-dots");
+const galleryDotsContainer = document.querySelector(".gallery-dots");
 
-// 🔁 Clone slides for seamless infinite loop
-const firstClone = slides[0].cloneNode(true);
-const lastClone = slides[totalSlides - 1].cloneNode(true);
+// Clones
+const firstClone = gallerySlides[0].cloneNode(true);
+const lastClone = gallerySlides[galleryTotal - 1].cloneNode(true);
 galleryGrid.appendChild(firstClone);
-galleryGrid.insertBefore(lastClone, slides[0]);
+galleryGrid.insertBefore(lastClone, gallerySlides[0]);
 
-const updatedSlides = document.querySelectorAll(".gallery-item");
-const newTotalSlides = updatedSlides.length;
+const updatedGallerySlides = document.querySelectorAll(".gallery-item");
+const updatedGalleryTotal = updatedGallerySlides.length;
 
-// 📏 Initial slide position
 galleryGrid.style.transform = `translateX(-100%)`;
 
-// ⚫ Create navigation dots
-slides.forEach((_, i) => {
+// Create gallery dots
+gallerySlides.forEach((_, i) => {
     const dot = document.createElement("span");
     dot.classList.add("gallery-dot");
     dot.dataset.index = i;
-    dotsContainer.appendChild(dot);
+    galleryDotsContainer.appendChild(dot);
 });
 
-const dots = document.querySelectorAll(".gallery-dot");
-dots[0].classList.add("active");
+const galleryDots = document.querySelectorAll(".gallery-dot");
+galleryDots[0].classList.add("active");
 
-// 🚀 Update slide position and dot
-function updateSlidePosition() {
+// Update gallery position
+function updateGalleryPosition() {
     galleryGrid.style.transition = "transform 0.5s ease-in-out";
-    const offset = -currentIndex * 100;
+    const offset = -galleryIndex * 100;
     galleryGrid.style.transform = `translateX(${offset}%)`;
 
-    dots.forEach((dot, index) => {
-        dot.classList.toggle("active", index === currentIndex - 1);
+    galleryDots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === galleryIndex - 1);
     });
 
-    // 🔁 Loop back if at cloned slide
     setTimeout(() => {
-        if (currentIndex === newTotalSlides - 1) {
+        if (galleryIndex === updatedGalleryTotal - 1) {
             galleryGrid.style.transition = "none";
-            currentIndex = 1;
+            galleryIndex = 1;
             galleryGrid.style.transform = `translateX(-100%)`;
-        } else if (currentIndex === 0) {
+        } else if (galleryIndex === 0) {
             galleryGrid.style.transition = "none";
-            currentIndex = totalSlides;
-            galleryGrid.style.transform = `translateX(-${currentIndex * 100}%)`;
+            galleryIndex = galleryTotal;
+            galleryGrid.style.transform = `translateX(-${galleryIndex * 100}%)`;
         }
     }, 500);
 }
 
-// 👆 Touch swipe for mobile navigation
+// Gallery navigation
+function nextGallerySlide() {
+    if (galleryIndex >= updatedGalleryTotal - 1) return;
+    galleryIndex++;
+    updateGalleryPosition();
+}
+
+function prevGallerySlide() {
+    if (galleryIndex <= 0) return;
+    galleryIndex--;
+    updateGalleryPosition();
+}
+
+// Touch/swipe
 let touchStartX = 0;
 let touchEndX = 0;
-const swipeThreshold = 50;
-
 galleryContainer.addEventListener("touchstart", (e) => {
     touchStartX = e.touches[0].clientX;
 });
-
 galleryContainer.addEventListener("touchmove", (e) => {
     touchEndX = e.touches[0].clientX;
 });
-
 galleryContainer.addEventListener("touchend", () => {
     const swipeDistance = touchStartX - touchEndX;
-
-    if (swipeDistance > swipeThreshold) {
-        nextSlide();
-    } else if (swipeDistance < -swipeThreshold) {
-        prevSlide();
+    if (swipeDistance > 50) {
+        nextGallerySlide();
+    } else if (swipeDistance < -50) {
+        prevGallerySlide();
     }
 });
 
-// 🔘 Dot navigation
-dots.forEach((dot) => {
+// Dots
+galleryDots.forEach((dot) => {
     dot.addEventListener("click", () => {
-        currentIndex = parseInt(dot.dataset.index) + 1;
-        updateSlidePosition();
+        galleryIndex = parseInt(dot.dataset.index) + 1;
+        updateGalleryPosition();
     });
 });
 
-// ⬅️➡️ Prev/Next Buttons
-const prevBtn = document.querySelector(".prev");
-const nextBtn = document.querySelector(".next");
+// Buttons
+const galleryPrevBtn = document.querySelector(".gallery-nav.prev");
+const galleryNextBtn = document.querySelector(".gallery-nav.next");
 
-if (prevBtn && nextBtn) {
-    prevBtn.addEventListener("click", prevSlide);
-    nextBtn.addEventListener("click", nextSlide);
+if (galleryPrevBtn && galleryNextBtn) {
+    galleryPrevBtn.addEventListener("click", prevGallerySlide);
+    galleryNextBtn.addEventListener("click", nextGallerySlide);
 }
 
-// ⏩ Slide functions
-function nextSlide() {
-    if (currentIndex >= newTotalSlides - 1) return;
-    currentIndex++;
-    updateSlidePosition();
-}
 
-function prevSlide() {
-    if (currentIndex <= 0) return;
-    currentIndex--;
-    updateSlidePosition();
-}
 
 // 🔝 Scroll to Top Button
 const scrollBtn = document.getElementById("scrollToTopBtn");

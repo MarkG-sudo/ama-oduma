@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
         showSlide(current);
     }
 
-    function startInterval() {
-        interval = setInterval(nextSlide, 6000);
-    }
+    // function startInterval() {
+    //     interval = setInterval(nextSlide, 6000);
+    // }
 
     function resetInterval() {
         clearInterval(interval);
