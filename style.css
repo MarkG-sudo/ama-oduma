@@ -216,7 +216,305 @@ section {
     overflow-x: hidden;
 }
 
+/* ============================
+   🛒 CART & CONFIRMATION STYLES
+============================ */
 
+/* ---- Close Button ---- */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* ---- Overlay ---- */
+#cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 900;
+}
+
+#cart-overlay.active {
+    display: block;
+}
+
+/* ---- Modal ---- */
+#cart-modal {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    width: 320px;
+    max-width: 90%;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+#cart-modal.active {
+    display: block;
+}
+
+#cart-items {
+    max-height: 220px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+/* ---- Buttons ---- */
+.cart-btns {
+    background-color: #133b1f;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 30%;
+    margin-top: 8px;
+}
+
+.cart-btns:hover {
+    background-color: #0f2e18;
+}
+
+/* ---- Cart Icon ---- */
+#cart-icon {
+    cursor: pointer;
+    color: white;
+    font-size: 1.3rem;
+    position: relative;
+}
+
+#cart-count {
+    background: #d4a24f;
+    color: black;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    position: absolute;
+    top: -8px;
+    right: -12px;
+}
+
+/* ============================
+   🧼 CONFIRMATION MODAL
+============================ */
+.confirm-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+}
+
+.confirm-modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.confirm-box {
+    background: #fff;
+    color: #222;
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 340px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    transform: translateY(-10px);
+    transition: transform 0.25s ease;
+}
+
+.confirm-modal:not(.hidden) .confirm-box {
+    transform: translateY(0);
+}
+
+.confirm-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.confirm-btn {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.confirm-btn:hover {
+    transform: scale(1.05);
+}
+
+.confirm-btn.danger {
+    background: #ffb400;
+    color: #000;
+}
+
+.confirm-btn.neutral {
+    background: #ddd;
+    color: #333;
+}
+
+.confirm-btn.danger:hover {
+    background: #ffd84d;
+}
+
+/* ============================
+   📱 RESPONSIVE MEDIA QUERIES
+============================ */
+
+/* Phones (Portrait ≤ 480px) */
+@media (max-width: 480px) {
+    #cart-modal {
+        top: 10%;
+        width: 70%;
+        padding: 16px;
+        font-size: 0.95rem;
+    }
+
+    #cart-items {
+        max-height: 180px;
+    }
+
+    .cart-btns {
+        font-size: 0.9rem;
+        padding: 8px 14px;
+    }
+
+    .confirm-box {
+        max-width: 280px;
+        padding: 20px 16px;
+        font-size: 0.9rem;
+    }
+
+    .confirm-btn {
+        padding: 7px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablets (481px–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    #cart-modal {
+        width: 60%;
+        top: 15%;
+        padding: 18px;
+    }
+
+    .confirm-box {
+        max-width: 300px;
+    }
+
+    .cart-btns {
+        font-size: 0.95rem;
+    }
+}
+
+/* Large tablets & small laptops (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #cart-modal {
+        width: 60%;
+        top: 18%;
+    }
+
+    .confirm-box {
+        max-width: 320px;
+    }
+}
+
+/* Desktops (≥1025px) */
+@media (min-width: 1025px) {
+    #cart-modal {
+        width: 400px;
+        top: 20%;
+    }
+}
+
+/* checkout modal */
+#email-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+#email-modal.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+#email-modal .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 320px;
+}
+
+#email-modal input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+#email-modal .modal-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+#email-modal button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#email-cancel {
+    background: #ccc;
+}
+
+#email-confirm {
+    background: #f5c400;
+    color: #000;
+    font-weight: bold;
+}
 
 /* Hero Section */
 /* 🎯 Hero Carousel Wrapper */
@@ -244,8 +542,8 @@ section {
 
 /* 🎨 Hero 1 Styles */
 #hero-1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.623), rgba(0, 0, 0, 0.623)),
-        url('./assets/images/outdoor\ shoot.png');
+    background-image: linear-gradient(rgba(22, 22, 22, 0.247), rgba(0, 0, 0, 0.397)),
+        url('./assets/images/homepage/outdoor-shoot.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -264,11 +562,11 @@ section {
 
 .hero-content p {
     font-family: 'Nunito', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 20px;
     color: #fff;
     /* Optional: makes it stand out more */
-    text-shadow: 2.5px 2.5px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2.5px 2.5px 4px rgba(0, 0, 0, 0.877);
 }
 
 #brand-logo {
@@ -388,7 +686,7 @@ section {
     }
 
     .hero-text p {
-        font-size: 16px;
+        font-size: 10px;
     }
 
     .hero-image img {
@@ -422,6 +720,23 @@ section {
         display: none !important;
         /* hide navigation and hero 2 */
     }
+}
+
+@media (max-width: 480px) {
+
+    .hero-content h1 {
+            font-size: 38px;
+        }
+    
+        .hero-content p {
+            font-size: 18px;
+            text-align: center;
+        }
+    
+        .hero-image img {
+            max-width: 60%;
+        }
+
 }
 
 
@@ -601,7 +916,7 @@ section {
 
 }
 
-.product-card a {
+.product-card span {
     color: #ffffff;
     text-decoration: none;
     font-size: 13px;
@@ -631,8 +946,106 @@ section {
     }
 
     .product-card {
-        max-width: 100%;
+        max-width: 80%;
         /* Expands to fit mobile screens */
+    }
+}
+
+/* button */
+:root {
+    --bg-color-1: #1f1d1d;
+    --bg-color-2: #57460c;
+    --bg-color-3: #094b15;
+    /* replaced pink with your brand green */
+    --padding: 0.3rem 1.0rem;
+    --font-family: 'Nunito', sans-serif;
+    --step: 0.4rem;
+}
+
+/* Hover effect trigger */
+.btns:is(:hover, :focus-visible) {
+    --active: 1;
+}
+
+.btns {
+    --active: 0;
+    color: white;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: 600;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    margin: 0 0.5rem;
+}
+
+.btns span:first-of-type {
+    padding: var(--padding);
+}
+
+.btns span:not(:first-of-type) {
+    position: absolute;
+}
+
+[aria-hidden] {
+    color: transparent;
+}
+
+.btns span {
+    inset: 0;
+    display: grid;
+    background: var(--bg);
+    place-items: center;
+    transition: 0.2s ease;
+    border: 2px solid #296d35;
+    translate:
+        calc((var(--active) * var(--coefficient, 0)) * (var(--step) * -1)) calc((var(--active) * var(--coefficient, 0)) * (var(--step) * -1));
+}
+
+.btns span:nth-of-type(1) {
+    --bg: var(--bg-color-3);
+    /* Green top layer */
+}
+
+.btns span:nth-of-type(2) {
+    --coefficient: 1;
+    --bg: var(--bg-color-2);
+    /* Gold middle layer */
+}
+
+.btns span:nth-of-type(3) {
+    --coefficient: 2;
+    --bg: var(--bg-color-1);
+    /* Dark bottom layer */
+}
+
+.btns:active {
+    --active: 0.5;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* space between buttons */
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .product-actions {
+        flex-direction: column;
+        /* stack vertically */
+        gap: 0.5rem;
+    }
+
+    .btns {
+        width: 100%;
+        /* make buttons full width on mobile */
+        max-width: 150px;
+        /* optional: limit so they don’t stretch too wide */
     }
 }
 
@@ -646,7 +1059,7 @@ section {
 }
 
 .ad-container {
-    max-width: 800px;
+    max-width: 950px;
     width: 100%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
@@ -670,204 +1083,251 @@ section {
 
 /* Gallery Section */
 #gallery {
-    height: 80vh;
-    padding: 50px 20px;
+    padding: 80px 20px;
     background-color: #183F26;
     text-align: center;
-    overflow: hidden;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./assets/images/ama-oduma-bg-1.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./assets/images/homepage/gallery_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #gallery h2 {
     font-family: 'Poppins', serif;
     color: #ffffff;
-    /* margin-bottom: 70px; */
     font-weight: 500;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
 }
 
 #gallery p {
     font-family: 'Poppins', serif;
     color: #C1D4CB;
-    margin-bottom: 70px;
-    font-weight: 500;
-    font-size: 0.9rem;
+    margin-bottom: 60px;
+    font-weight: 400;
+    font-size: 1rem;
 }
 
-/* Wrapper for entire gallery */
-.gallery-wrapper {
-    position: relative;
-    width: 50%;
-    max-width: 800px;
-    height: 70%;
-    margin: 0 auto;
+/* Gallery Cards Container */
+.gallery-cards {
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Container for sliding images */
-.gallery-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    flex-direction: row;
+    align-items: stretch;
     overflow: hidden;
-    border: 9px solid #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-width: 600px;
+    max-width: 1200px;
+    width: calc(100% - 100px);
+    height: 500px;
+    border-radius: 40px;
+    perspective: 1000px;
 }
 
-/* Ensure slides are aligned horizontally */
-.gallery-grid {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 300%;
-    /* Ensures proper slide width */
-}
-
-.gallery-item {
-    width: 100%;
-    height: 100%;
-    flex: 0 0 100%;
-    /* Ensures images do not stack */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* aspect-ratio: 16/10;  */
-}
-
-.gallery-item img {
-    width: 55%;
-    height: 70%;
-    object-fit: cover;
-    object-position: center center;
-    /* Ensures the most important part is visible */
-}
-
-/* Dots for slider */
-.gallery-dots {
-    text-align: center;
-    margin-top: 15px;
-}
-
-.gallery-dot {
-    width: 5px;
-    /* Increase size if needed */
-    height: 5px;
-    margin: 0 9px;
-    border: 1px solid rgba(94, 89, 89, 0.7);
-    /* Creates the hollow effect */
-    border-radius: 50%;
-    display: inline-block;
-    transition: all 0.3s ease;
-    background: transparent;
-    /* Ensures it's hollow */
-}
-
-.gallery-dot.active {
-    background: white;
-    /* Fills the active dot */
-    border-color: white;
-    /* Keeps border visible */
-}
-
-/* Arrows placed outside the wrapper */
-.gallery-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    color: rgb(163, 165, 69);
-    border: none;
+/* Individual Option Cards */
+.option {
+    position: relative;
+    overflow: hidden;
+    min-width: 60px;
+    margin: 10px;
+    background: var(--optionBackground, var(--defaultBackground, #E6E9ED));
+    background-size: cover;
+    /* ✅ Better image handling */
+    background-position: center;
     cursor: pointer;
-    font-size: 19px;
-    padding: 10px 15px;
-    z-index: 10;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    border-radius: 30px;
+    flex-grow: 1;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center center;
+}
+
+.option.active {
+    flex-grow: 10000;
+    transform: scale(1);
+    max-width: 600px;
+    margin: 0px;
+    border-radius: 40px;
+    background-size: cover;
+    /* ✅ Consistent image scaling */
+    filter: brightness(1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.option:not(.active) {
+    flex-grow: 1;
+    border-radius: 30px;
+    transform: scale(0.95);
+    filter: brightness(0.8);
+}
+
+/* Shadow Overlay */
+.shadow {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 120px;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* ✅ Consistent timing */
+}
+
+.option.active .shadow {
+    box-shadow: inset 0 -120px 120px -120px black, inset 0 -120px 120px -100px black;
+}
+
+.option:not(.active) .shadow {
+    bottom: -40px;
+    box-shadow: inset 0 -120px 0px -120px black, inset 0 -120px 0px -100px black;
+}
+
+/* Label with Icon and Text */
+.label {
     display: flex;
-    align-items: center;
+    position: absolute;
+    right: 0px;
+    height: 40px;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* ✅ Consistent timing */
+}
+
+.option.active .label {
+    bottom: 20px;
+    left: 20px;
+}
+
+.option:not(.active) .label {
+    bottom: 10px;
+    left: 10px;
+}
+
+.icon {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: white;
+    color: #183F26;
+    font-size: 1rem;
+    flex-shrink: 0;
+    /* ✅ Prevents icon shrinking */
 }
 
-/* Moves arrows outside the wrapper */
-.gallery-nav.prev {
-    left: -70px;
-    /* Moves it further out */
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    color: white;
+    white-space: pre;
 }
 
-.gallery-nav.next {
-    right: -70px;
-    /* Moves it further out */
+.info>div {
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out;
+    /* ✅ Consistent timing */
 }
 
-/* Hide dots on desktop */
-@media (min-width: 769px) {
-    .gallery-dots {
+.option.active .info>div {
+    left: 0px;
+    opacity: 1;
+}
+
+.option:not(.active) .info>div {
+    left: 20px;
+    opacity: 0;
+}
+
+.main {
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sub {
+    transition-delay: .1s;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 798px) {
+    .gallery-cards {
+        min-width: 500px;
+        height: 400px;
+    }
+
+    .option:nth-child(5) {
         display: none;
     }
 }
 
-/* Hide arrows and fix mobile layout */
-@media (max-width: 768px) {
-    .gallery-nav {
+@media screen and (max-width: 718px) {
+    .gallery-cards {
+        min-width: 420px;
+        height: 350px;
+    }
+
+    .option:nth-child(4) {
         display: none;
-        /* Hide arrows on mobile */
+    }
+}
+
+@media screen and (max-width: 638px) {
+    .gallery-cards {
+        min-width: 340px;
+        height: 300px;
+        width: calc(100% - 40px);
+    }
+
+    .option:nth-child(3) {
+        display: none;
     }
 
     #gallery h2 {
-        font-family: 'Poppins', serif;
-        /* color: #C1D4CB; */
-        color: #d4a24f;
-        font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1.4rem;
     }
 
-    .gallery-container {
-        overflow: hidden;
-        /* Ensures only one image is visible */
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 7px solid #ffffff;
+    #gallery p {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gallery-cards {
+        min-width: 280px;
+        height: 250px;
     }
 
-    .gallery-grid {
-        display: flex;
-        flex-direction: row !important;
-        /* Force horizontal layout */
-        flex-wrap: nowrap;
-        /* Prevents stacking */
-        width: 300%;
-        /* Adjusted for sliding */
-        transition: transform 0.5s ease-in-out;
+    #gallery {
+        padding: 60px 15px;
     }
 
-    .gallery-item {
-        width: 100%;
-        /* Each image takes full width of container */
-        flex: 0 0 100%;
-        /* Prevents images from shrinking or growing */
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .icon {
+        min-width: 35px;
+        max-width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
     }
 
-    .gallery-item p {
-        display: none;
+    .main {
+        font-size: 1rem;
     }
 
-    .gallery-item img {
-        width: 100%;
-        height: auto;
-        /* Ensures aspect ratio remains */
-        object-fit: cover;
+    .sub {
+        font-size: 0.8rem;
+    }
+
+    /* ✅ Better mobile touch targets */
+    .option {
+        margin: 8px;
     }
 }
 
@@ -1300,4 +1760,30 @@ footer p {
 #scrollToTopBtn.show {
     opacity: 1;
     visibility: visible;
+}
+
+/* TOAST */
+/* 🔔 Toast message */
+#toast-message {
+    visibility: hidden;
+    min-width: 220px;
+    margin-left: -110px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 12px;
+    position: fixed;
+    z-index: 10000;
+    left: 50%;
+    bottom: 30px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.5s ease, bottom 0.5s ease;
+}
+
+#toast-message.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
 }

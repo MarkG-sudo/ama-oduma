@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
-    <script defer src="hero-slider.js"></script>
+    <link rel="icon" type="image/x-icon" href="./assets/images/oduma_faviconB.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="main.js"></script>
+    <script defer src="cart-ui.js"></script>
 
 </head>
 
@@ -21,15 +23,30 @@
                 <li><a href="#products">Products</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="./Contact.html" target="_blank">Contact</a></li>
-                <li class="bag-icon">
-                    <a href="#cart">
-                        <i class="fas fa-shopping-bag"></i> <!-- Font Awesome shopping bag -->
-                        <span class="item-count">0</span>
+                <li id="cart-icon" class="bag-icon">
+                    <a href="javascript:void(0)">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span id="cart-count">0</span>
                     </a>
                 </li>
+
+
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
         </nav>
+    <div id="cart-modal" class="hidden">
+        <button id="close-cart" class="close-btn">×</button>
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <p><strong>Total: </strong> GHS <span id="cart-total">0</span></p>
+        <button class="cart-btns" onclick="checkoutCart()">Checkout</button>
+        <button class="cart-btns" onclick="clearCart()">Clear Cart</button>
+    </div>
+    
+    <!-- Overlay -->
+    <div id="cart-overlay"></div>
+
+
     </header>
 
 
@@ -41,34 +58,34 @@
                 <h1>Ama Oduma</h1>
                 <p>Timeless quality, Crafted with care!</p>
                 <div id="brand-logo">
-                    <img src="./assets/images/AMA-Logo-Transparent.png" alt="Ama Oduma Logo">
+                    <img src="./assets/images/homepage/AMA-Logo-Transparent.png" alt="Ama Oduma Logo">
                 </div>
             </div>
         </section>
-    
+
         <!-- Hero 2: Flex layout with text and image -->
-        <section class="hero-slide hero-flex" id="hero-2">
+        <!-- <section class="hero-slide hero-flex" id="hero-2">
             <div class="hero-text">
                 <h1>Ama Oduma</h1>
                 <p>Rooted in heritage. Refined for today.</p>
-                <img src="./assets/images/AMA-Logo-Transparent.png" alt="">
-            </div>
+                <img src="./assets/images/homepage/AMA-Logo-Transparent.png" alt="">
+            </div> -->
             <div class="hero-image">
-                <img src="./assets/images/overview.png" alt="Ama Oduma Banner">
+                <img src="./assets/images/homepage/overview.png" alt="Ama Oduma Banner">
             </div>
         </section>
-    
+
         <!-- Arrows -->
-        <button class="hero-nav prev">&#10094;</button>
-        <button class="hero-nav next">&#10095;</button>
-    
+        <!-- <button class="hero-nav prev">&#10094;</button>
+        <button class="hero-nav next">&#10095;</button> -->
+
         <!-- Dots -->
-        <div class="hero-dots">
+        <!-- <div class="hero-dots">
             <span class="dot active"></span>
             <span class="dot"></span>
-        </div>
+        </div> -->
     </div>
-      
+
 
     <section id="about">
         <div class="about-content">
@@ -77,77 +94,202 @@
             <a href="./about.html" class="btn" target="_blank">Our Story <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="about-image">
-            <img src="./assets/images/about_tote-clear.png" alt="Luxury Bag">
+            <img src="./assets/images/homepage/about_tote_clear.png" alt="Flower-patterned Bag">
         </div>
     </section>
 
-    <section id="products">
-        <h2>Our Products</h2>
-        <div class="product-list">
-            <div class="product-card"> <img src="./assets/images/reusable-eco-friendly-tote-bag-min.jpg" alt="">
-                <p>Akosua</p>
-                <a href="">&#8373; 200.00</a>
-            </div>
-            <div class="product-card"> <img src="./assets/images/reusable-eco-friendly-tote-bag-min.jpg" alt="">
-                <p>Ehurama</p>
-                <a href="">&#8373; 200.00</a>
-            </div>
-            <div class="product-card"> <img src="./assets/images/reusable-eco-friendly-tote-bag-min.jpg" alt="">
-                <p>Abam</p>
-                <a href="">&#8373; 200.00</a>
-            </div>
-            <div class="product-card"> <img src="./assets/images/reusable-eco-friendly-tote-bag-min.jpg" alt="">
-                <p>Adepa</p>
-                <a href="">&#8373; 200.00</a>
-            </div>
-            <div class="product-card"> <img src="./assets/images/reusable-eco-friendly-tote-bag-min.jpg" alt="">
-                <p>Osram</p>
-                <a href="">&#8373; 200.00</a>
-            </div>
-            <div class="product-card"> <img src="./assets/images/reusable-eco-friendly-tote-bag-min.jpg" alt="">
-                <p>Yen</p>
-                <a href="">&#8373; 200.00</a>
-            </div>
-            <div class="product-card"> <img src="./assets/images/reusable-eco-friendly-tote-bag-min.jpg" alt="">
-                <p>Oman</p>
-                <a href="">&#8373; 200.00</a>
-            </div>
-            <div class="product-card"> <img src="./assets/images/reusable-eco-friendly-tote-bag-min.jpg" alt="">
-                <p>Ade</p>
-                <a href="">&#8373; 200.00</a>
-            </div>
+<section id="products">
+    <h2>Our Products</h2>
+    <div class="product-list">
+        <div class="product-card">
+            <img src="./assets/images/Products/reusable-eco-friendly-tote-bag-min.jpg" alt="">
+            <p>Akosua</p>
+            <span class="price">&#8373; 2.00</span>
+            <div class="product-actions">
+                <button class="btns buy-now" onclick="window.open('https://paystack.shop/pay/ama-oduma-bag', '_blank')">
+                    <span>Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                </button>
 
-
-
+                <button class="btns add-to-cart" data-name="Akosua" data-price="2"
+                    data-img="./assets/images/reusable-eco-friendly-tote-bag-min.jpg">
+                    <span> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                </button>
+            </div>
         </div>
-    </section>
 
-<section id="ad-section" >
-   
-    <div class="ad-container">
-        <a href="./Quantity Order.html"><img src="./assets/images/Large Volume Order ad.png" alt="Gift bag ad" class="ad-image"></a>
+        <div class="product-card">
+            <img src="./assets/images/Products/reusable-eco-friendly-tote-bag-min.jpg" alt="">
+            <p>Ehurama</p>
+            <span class="price">&#8373; 2.00</span>
+            <div class="product-actions">
+                <button class="btns buy-now" onclick="window.open('https://paystack.shop/pay/ama-oduma-bag', '_blank')">
+                    <span>Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                </button>
+
+                <button class="btns add-to-cart" data-name="Ehurama" data-price="2"
+                    data-img="./assets/images/reusable-eco-friendly-tote-bag-min.jpg">
+                    <span> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="./assets/images/Products/reusable-eco-friendly-tote-bag-min.jpg" alt="">
+            <p>Abam</p>
+            <span class="price">&#8373; 2.00</span>
+            <div class="product-actions">
+                <button class="btns buy-now" onclick="window.open('https://paystack.shop/pay/ama-oduma-bag', '_blank')">
+                    <span>Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                </button>
+
+                <button class="btns add-to-cart" data-name="Abam" data-price="2"
+                    data-img="./assets/images/reusable-eco-friendly-tote-bag-min.jpg">
+                    <span> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="./assets/images/Products/reusable-eco-friendly-tote-bag-min.jpg" alt="">
+            <p>Adepa</p>
+            <span class="price">&#8373; 2.00</span>
+            <div class="product-actions">
+                <button class="btns buy-now" onclick="window.open('https://paystack.shop/pay/ama-oduma-bag', '_blank')">
+                    <span>Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                </button>
+
+                <button class="btns add-to-cart" data-name="Adepa" data-price="2"
+                    data-img="./assets/images/reusable-eco-friendly-tote-bag-min.jpg">
+                    <span> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="./assets/images/Products/reusable-eco-friendly-tote-bag-min.jpg" alt="">
+            <p>Osram</p>
+            <span class="price">&#8373; 2.00</span>
+            <div class="product-actions">
+                <button class="btns buy-now" onclick="window.open('https://paystack.shop/pay/ama-oduma-bag', '_blank')">
+                    <span>Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                </button>
+
+                <button class="btns add-to-cart" data-name="Osram" data-price="2"
+                    data-img="./assets/images/reusable-eco-friendly-tote-bag-min.jpg">
+                    <span> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="./assets/images/Products/reusable-eco-friendly-tote-bag-min.jpg" alt="">
+            <p>Yen</p>
+            <span class="price">&#8373; 2.00</span>
+            <div class="product-actions">
+                <button class="btns buy-now" onclick="window.open('https://paystack.shop/pay/ama-oduma-bag', '_blank')">
+                    <span>Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                </button>
+
+                <button class="btns add-to-cart" data-name="Yen" data-price="2"
+                    data-img="./assets/images/reusable-eco-friendly-tote-bag-min.jpg">
+                    <span> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="./assets/images/Products/reusable-eco-friendly-tote-bag-min.jpg" alt="">
+            <p>Oman</p>
+            <span class="price">&#8373; 2.00</span>
+            <div class="product-actions">
+                <button class="btns buy-now" onclick="window.open('https://paystack.shop/pay/ama-oduma-bag', '_blank')">
+                    <span>Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                </button>
+
+                <button class="btns add-to-cart" data-name="Oman" data-price="2"
+                    data-img="./assets/images/reusable-eco-friendly-tote-bag-min.jpg">
+                    <span> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="./assets/images/Products/reusable-eco-friendly-tote-bag-min.jpg" alt="">
+            <p>Ade</p>
+            <span class="price">&#8373; 2.00</span>
+            <div class="product-actions">
+                <button class="btns buy-now" onclick="window.open('https://paystack.shop/pay/ama-oduma-bag', '_blank')">
+                    <span>Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                    <span aria-hidden="true">Buy Now</span>
+                </button>
+
+                <button class="btns add-to-cart" data-name="Ade" data-price="2"
+                    data-img="./assets/images/reusable-eco-friendly-tote-bag-min.jpg">
+                    <span> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                    <span aria-hidden="true"> Add to Cart</span>
+                </button>
+            </div>
+        </div>
     </div>
 </section>
 
+    <section id="ad-section">
 
-    <section id="assurance" >
-        
+        <div class="ad-container">
+            <a href="./Quantity Order.html"><img src="./assets/images/homepage/Large Volume Order ad.png" alt="Gift bag ad"
+                    class="ad-image"></a>
+        </div>
+    </section>
+
+
+    <section id="assurance">
+
         <h2>Our Promise to You</h2>
         <div class="assurance-container">
             <div class="assurance-card">
-                <img src="./assets/images/design-research-svgrepo-com.svg" alt="About us">
+                <img src="./assets/images/homepage/design-research-svgrepo-com.svg" alt="About us">
                 <h3>Timeless Design</h3>
                 <p>Blending African heritage with modern elegance.</p>
 
             </div>
             <div class="assurance-card">
-                <img src="./assets/images/sewing-machine-sew-svgrepo-com.svg" alt="Our Craftsmanship">
+                <img src="./assets/images/homepage/sewing-machine-sew-svgrepo-com.svg" alt="Our Craftsmanship">
                 <h3>Our Craftsmanship</h3>
                 <p>Handcrafted with precision and care for lasting quality.</p>
 
             </div>
             <div class="assurance-card">
-                <img src="./assets/images/loop-infinity-svgrepo-com.svg" alt="Sustainability">
+                <img src="./assets/images/homepage/loop-infinity-svgrepo-com.svg" alt="Sustainability">
                 <h3>Guaranteed Durability</h3>
                 <p>Tested for strength to support your daily adventures.</p>
 
@@ -157,9 +299,9 @@
 
     <section id="lifestyle" class="image-lifestyle">
         <div class="lifestyle-flex">
-           
+
             <div class="ls-container">
-                <img src="./assets/images/AO tote.png" alt="Luxury Bag" class="lifestyle-bg" />
+                <img src="./assets/images/homepage/AO tote.png" alt="Texture-rich Bag" class="lifestyle-bg" />
             </div>
             <div class="lifestyle-content">
                 <h2>Made to carry <br> more than <br> just your essentials ...</h2>
@@ -169,48 +311,84 @@
     </section>
 
 
-
-
     <section id="gallery">
-        <h2>Window Into our Collection</h2>
-        <p>Time-honoured Craftsmanship</p>
-        <div class="gallery-wrapper">
-            <div class="gallery-container">
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="./assets/images/ABOUT-TOTE-EX.png" alt="Client Image">
-                        <p>Guaranteed quality and satisfaction.</p>
+        <h2>Our Craft, Your Canvas</h2>
+        <p>A glimpse into how our creations live, breathe, and belong with you!</p>
+    
+        <div class="gallery-cards">
+            <div class="option active" style="--optionBackground:url('./assets/images/gallery/COGG-608.JPG');">
+                <div class="shadow"></div>
+                <div class="label">
+                    <div class="icon">
+                        <i class="fas fa-shopping-bag"></i>
                     </div>
-                    <div class="gallery-item">
-                        <img src="./assets/images/ABOUT-TOTE-EX.png" alt="Client Image">
-                        <p>Guaranteed quality and satisfaction.</p>
+                    <div class="info">
+                        <div class="main">Akosua Collection</div>
+                        <div class="sub">Premium Eco-Friendly Totes</div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="./assets/images/ABOUT-TOTE-EX.png" alt="Client Image">
-                        <p>Guaranteed quality and satisfaction.</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="./assets/images/ABOUT-TOTE-EX.png" alt="Client Image">
-                        <p>Guaranteed quality and satisfaction.</p>
-                    </div>
-
-
                 </div>
             </div>
-            <button class="gallery-nav prev">‹</button>
-            <button class="gallery-nav next">›</button>
-
+    
+            <div class="option" style="--optionBackground:url('./assets/images/gallery/COGG-607.JPG');">
+                <div class="shadow"></div>
+                <div class="label">
+                    <div class="icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="info">
+                        <div class="main">Everyday Essentials</div>
+                        <div class="sub">Perfect for Daily Use</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="option" style="--optionBackground:url('./assets/images/gallery/laptop.jpg');">
+                <div class="shadow"></div>
+                <div class="label">
+                    <div class="icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="info">
+                        <div class="main">Work & Tech</div>
+                        <div class="sub">Professional & Functional</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="option" style="--optionBackground:url('./assets/images/gallery/fam.png');">
+                <div class="shadow"></div>
+                <div class="label">
+                    <div class="icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="info">
+                        <div class="main">Artisan Designs</div>
+                        <div class="sub">Handcrafted Excellence</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="option" style="--optionBackground:url('./assets/images/gallery/car.jpg');">
+                <div class="shadow"></div>
+                <div class="label">
+                    <div class="icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="info">
+                        <div class="main">Sustainable Style</div>
+                        <div class="sub">Eco-Conscious Fashion</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="gallery-dots"></div>
     </section>
-
 
 
 
     <section id="contact">
         <div class="contact-container">
             <div class="contact-logo">
-                <img src="./assets/images/AMA_ODUMA-footer.png " alt="Ama Oduma logo">
+                <img src="./assets/images/homepage/AMA_ODUMA-footer.png " alt="Ama Oduma logo">
             </div>
 
             <div class="service-links">
@@ -233,7 +411,7 @@
                     <h4>Fast Lane</h4>
                     <ul>
                         <li><a href="./Emergency Order.html" target="_blank">Emergency Order</a></li>
-                        
+
                     </ul>
                 </div>
                 <div id="bag-quotes">
@@ -254,7 +432,7 @@
                     <li><a href="./cookie policy.html" target="_blank">Cookies policy</a></li>
                     <li><a href="./Terms&Conditions.html" target="_blank">General terms and conditions</a></li>
                     <li><a href="./privacy policy.html" target="_blank">Privacy policy</a></li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -265,6 +443,35 @@
     </footer>
 
     <button id="scrollToTopBtn" title="Go to top">&#8679;</button>
+
+    <!-- Confirmation Modal -->
+    <div id="confirm-modal" class="confirm-modal hidden">
+        <div class="confirm-box">
+            <p>Are you sure you want to clear your cart?</p>
+            <div class="confirm-actions">
+                <button id="confirm-yes" class="confirm-btn danger">Yes, clear</button>
+                <button id="confirm-no" class="confirm-btn neutral">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+<!-- 📨 Email Modal -->
+<div id="email-modal" class="confirm-modal hidden">
+    <div class="confirm-box">
+        <h3>Enter your email to continue</h3>
+        <input type="email" id="user-email" placeholder="you@example.com"
+            style="width:90%; padding:8px; margin-top:10px; border:1px solid #ccc; border-radius:6px;">
+        <div class="confirm-actions">
+            <button id="email-cancel" class="confirm-btn neutral">Cancel</button>
+            <button id="email-confirm" class="confirm-btn danger">Continue</button>
+        </div>
+    </div>
+</div>
+
+
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
 
 </body>
 

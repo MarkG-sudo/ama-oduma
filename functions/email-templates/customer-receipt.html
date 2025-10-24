@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - Ama Oduma</title>
+    <style>
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+            padding: 20px;
+        }
+
+        .email-header {
+            background-color: #306F44;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .email-header img {
+            width: 100px;
+        }
+
+        .email-header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .email-content {
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .order-items {
+            margin: 15px 0;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c5530;
+            text-align: right;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #2c5530;
+        }
+
+        .reference-number {
+            background: #e8f5e8;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .customer-name {
+            color: #667eea;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1>Thank You for Your Order!</h1>
+            <img src="https://res.cloudinary.com/dmysye8a7/image/upload/v1761318448/AMA_ODUMA-mail_deuc0y.png" alt="ama-oduma-logo">
+        </div>
+
+        <div class="email-content">
+            <p>Hello <span class="customer-name">{{customerName}}</span>,</p>
+
+            <p>Your payment has been successfully processed and your order is confirmed.</p>
+
+            <div class="order-details">
+                <h3>Order Details</h3>
+                <div class="reference-number">Order Reference: <strong>{{reference}}</strong></div>
+                <div class="order-items">{{orderItems}}</div>
+                <div class="order-total">Total Paid: GHS {{totalAmount}}</div>
+            </div>
+
+            <p>We’ll contact you with delivery or shipping details once your order is ready.</p>
+
+            <div class="footer">
+                <p>Thank you for choosing Ama Oduma!</p>
+                <div class="signature">— The Ama Oduma Team</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
