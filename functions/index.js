@@ -252,14 +252,14 @@ exports.paystackWebhook = functions.https.onRequest(
 
                 const customerMsg = {
                     to: data.customer.email,
-                    from: "amaodumagh@gmail.com",
+                    from: "orders@amaoduma.store",
                     subject: "Ama Oduma - Order Confirmation 🎉",
                     html: renderTemplate(customerTemplate, customerEmailData),
                 };
 
                 const teamMsg = {
                     to: "amaodumagh@gmail.com",
-                    from: "amaodumagh@gmail.com",
+                    from: "orders@amaoduma.store",
                     subject: `🚨 New Order - ${data.customer.email}`,
                     html: renderTemplate(adminTemplate, adminEmailData),
                 };

@@ -49,8 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (galleryOptions.length > 0) {
         let currentActive = 0;
-        let autoRotateInterval;
-        let isUserInteracting = false;
 
         function activateCard(index) {
             // Remove active class from all options
@@ -60,59 +58,17 @@ document.addEventListener("DOMContentLoaded", function () {
             currentActive = index;
         }
 
-        function startAutoRotate() {
-            autoRotateInterval = setInterval(() => {
-                if (!isUserInteracting) {
-                    const nextIndex = (currentActive + 1) % galleryOptions.length;
-                    activateCard(nextIndex);
-                }
-            }, 5000);
-        }
-
-        function stopAutoRotate() {
-            clearInterval(autoRotateInterval);
-        }
-
         function handleCardClick(index) {
-            isUserInteracting = true;
             activateCard(index);
-
-            // Restart auto-rotate after user interaction, but wait a bit longer
-            stopAutoRotate();
-            setTimeout(() => {
-                isUserInteracting = false;
-                startAutoRotate();
-            }, 8000); // Wait 8 seconds after user click before resuming auto-rotate
         }
 
         // Add click events
         galleryOptions.forEach((option, index) => {
             option.addEventListener('click', () => handleCardClick(index));
-
-            // Add hover events to pause auto-rotate
-            option.addEventListener('mouseenter', () => {
-                isUserInteracting = true;
-                stopAutoRotate();
-            });
-
-            option.addEventListener('mouseleave', () => {
-                isUserInteracting = false;
-                startAutoRotate();
-            });
         });
 
         // Initialize
         activateCard(0);
-        startAutoRotate();
-
-        // Pause auto-rotate when user is interacting with the page
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                stopAutoRotate();
-            } else {
-                startAutoRotate();
-            }
-        });
     }
 
     // ----- FORTUNE TEXT -----
