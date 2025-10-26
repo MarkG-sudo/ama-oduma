@@ -44,32 +44,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     window.addEventListener("scroll", highlightNav);
 
+
+
     // ----- GALLERY CARDS INTERACTION -----
-    const galleryOptions = document.querySelectorAll('.gallery-cards .option');
+    window.addEventListener('load', () => {
+        const galleryOptions = document.querySelectorAll('.gallery-cards .option');
 
-    if (galleryOptions.length > 0) {
-        let currentActive = 0;
+        if (galleryOptions.length > 0) {
+            let currentActive = 0;
 
-        function activateCard(index) {
-            // Remove active class from all options
-            galleryOptions.forEach(opt => opt.classList.remove('active'));
-            // Add active class to selected option
-            galleryOptions[index].classList.add('active');
-            currentActive = index;
+            function activateCard(index) {
+                galleryOptions.forEach(opt => opt.classList.remove('active'));
+                galleryOptions[index].classList.add('active');
+                currentActive = index;
+            }
+
+            galleryOptions.forEach((option, index) => {
+                option.addEventListener('click', () => activateCard(index));
+            });
+
+            // Allow first paint to complete before initial activation
+            setTimeout(() => activateCard(0), 200);
         }
+    });
 
-        function handleCardClick(index) {
-            activateCard(index);
-        }
 
-        // Add click events
-        galleryOptions.forEach((option, index) => {
-            option.addEventListener('click', () => handleCardClick(index));
-        });
-
-        // Initialize
-        activateCard(0);
-    }
 
     // ----- FORTUNE TEXT -----
     const fortunes = [

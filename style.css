@@ -552,6 +552,25 @@ section {
     height: 100vh;
 }
 
+.hero-content {
+    background: rgba(255, 255, 255, 0);
+    /* ✨ Elegant transparent overlay */
+    backdrop-filter: blur(3px);
+    /* 💎 Glassy effect */
+    -webkit-backdrop-filter: blur(5px);
+    /* Safari support */
+    border-radius: 40px;
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+    color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.575);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
 .hero-content h1 {
     font-family: 'Libre Baskerville', serif;
     font-size: 40px;
@@ -674,7 +693,17 @@ section {
 }
 
 /* 📱 Responsive */
+
 @media (max-width: 768px) {
+
+    /* .hero-content {
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: none;
+    } */
+
+
     .hero-flex {
         flex-direction: column;
         padding: 20px;
@@ -690,7 +719,7 @@ section {
     }
 
     .hero-image img {
-        max-width: 100%;
+        max-width: 30%;
     }
 
     .hero-nav {
@@ -724,21 +753,26 @@ section {
 
 @media (max-width: 480px) {
 
+    /* .hero-content {
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: none;
+    } */
+
     .hero-content h1 {
-            font-size: 38px;
-        }
-    
-        .hero-content p {
-            font-size: 18px;
-            text-align: center;
-        }
-    
-        .hero-image img {
-            max-width: 60%;
-        }
+        font-size: 38px;
+    }
 
+    .hero-content p {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .hero-image img {
+        max-width: 30%;
+    }
 }
-
 
 
 
@@ -1202,12 +1236,11 @@ section {
 }
 
 
-/* Gallery Section */
+/* 🎨 Gallery Section */
 #gallery {
-    padding: 80px 20px;
-    background-color: #183F26;
+    padding: 20px 20px;
+    background-color: #1d1d18;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./assets/images/homepage/gallery_bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1219,11 +1252,9 @@ section {
 }
 
 #gallery h2 {
-    font-family: 'Poppins', serif;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 1.8rem;
+    font-size: 26px;
     margin-bottom: 10px;
+    color: #ffffff;
 }
 
 #gallery p {
@@ -1234,7 +1265,7 @@ section {
     font-size: 1rem;
 }
 
-/* Gallery Cards Container */
+/* 🖼️ Gallery Cards Container */
 .gallery-cards {
     display: flex;
     flex-direction: row;
@@ -1243,114 +1274,97 @@ section {
     min-width: 600px;
     max-width: 1200px;
     width: calc(100% - 100px);
-    height: 500px;
+    height: 420px;
     border-radius: 40px;
     perspective: 1000px;
     gap: 10px;
-    /* ✅ Added gap instead of margin for smoother transitions */
 }
 
-/* Individual Option Cards */
+/* 🧩 Individual Option Cards */
 .option {
     position: relative;
     overflow: hidden;
     min-width: 80px;
-    /* ✅ Increased minimum width for better inactive state */
-    background: var(--optionBackground, var(--defaultBackground, #E6E9ED));
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
     border-radius: 30px;
     flex: 1;
-    /* ✅ Use flex shorthand for better control */
-    transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-    /* ✅ Smoother easing function */
+    cursor: pointer;
+    transition: flex 0.6s ease, transform 0.4s ease, filter 0.4s ease;
     transform-origin: center center;
     will-change: flex, transform, filter;
-    /* ✅ Performance optimization */
+    background-color: #222;
+    /* fallback before image loads */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.option img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: transform 0.6s ease;
+}
+
+.option.active img {
+    transform: scale(1.05);
 }
 
 .option.active {
     flex: 8 1 0%;
-    /* ✅ More controlled flex growth */
     transform: scale(1);
     border-radius: 40px;
-    background-size: cover;
     filter: brightness(1);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-    /* ✅ Enhanced shadow for depth */
-    margin: 0;
-    /* ✅ Remove margin when active */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .option:not(.active) {
     flex: 1 1 0%;
-    /* ✅ Consistent flex behavior */
     border-radius: 30px;
     transform: scale(0.98);
-    /* ✅ Slightly reduced scale for smoother feel */
     filter: brightness(0.7) saturate(0.9);
-    /* ✅ Better visual hierarchy */
-    margin: 0;
-    /* ✅ Remove individual margins */
 }
 
-/* Shadow Overlay */
+/* 🌘 Shadow Overlay */
 .shadow {
     position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    height: 120px;
-    transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-    /* ✅ Consistent timing */
-    background: linear-gradient(to top,
-            rgba(0, 0, 0, 0.8) 0%,
-            rgba(0, 0, 0, 0.4) 50%,
-            transparent 100%);
-    /* ✅ Smoother gradient overlay */
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 70%);
+    z-index: 1;
+    transition: opacity 0.5s ease;
 }
 
 .option.active .shadow {
     opacity: 1;
-    transform: translateY(0);
 }
 
 .option:not(.active) .shadow {
     opacity: 0.6;
-    transform: translateY(10px);
-    /* ✅ Smoother shadow movement */
 }
 
-/* Label with Icon and Text */
+/* 🏷️ Label */
 .label {
     display: flex;
     position: absolute;
-    right: 0px;
-    height: 40px;
-    transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-    /* ✅ Consistent timing */
     align-items: center;
-    /* ✅ Better vertical alignment */
+    z-index: 2;
+    transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .option.active .label {
-    bottom: 30px;
-    left: 30px;
-    right: auto;
-    /* ✅ Reset right positioning */
+    bottom: 25px;
+    left: 25px;
 }
 
 .option:not(.active) .label {
     bottom: 15px;
     left: 15px;
-    right: auto;
-    /* ✅ Reset right positioning */
 }
 
+/* 🔘 Icon */
 .icon {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     min-width: 40px;
@@ -1362,14 +1376,13 @@ section {
     font-size: 1rem;
     flex-shrink: 0;
     transition: transform 0.4s ease;
-    /* ✅ Added icon transition */
 }
 
 .option.active .icon {
     transform: scale(1.1);
-    /* ✅ Subtle icon emphasis */
 }
 
+/* ℹ️ Info Text */
 .info {
     display: flex;
     flex-direction: column;
@@ -1378,15 +1391,12 @@ section {
     color: white;
     white-space: pre;
     overflow: hidden;
-    /* ✅ Prevent text overflow issues */
 }
 
 .info>div {
     position: relative;
     transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-    /* ✅ Consistent timing */
     will-change: transform, opacity;
-    /* ✅ Performance optimization */
 }
 
 .option.active .info>div {
@@ -1396,40 +1406,39 @@ section {
 
 .option:not(.active) .info>div {
     transform: translateX(-10px);
-    /* ✅ Smoother text animation */
     opacity: 0;
 }
 
 .main {
     font-weight: 600;
-    /* ✅ Slightly bolder for better readability */
     font-size: 1.2rem;
     font-family: 'Poppins', sans-serif;
     margin-bottom: 2px;
-    /* ✅ Better spacing */
 }
 
 .sub {
-    transition-delay: .15s;
-    /* ✅ Slightly longer delay for staggered effect */
+    transition-delay: 0.15s;
     font-size: 0.9rem;
     font-family: 'Poppins', sans-serif;
     opacity: 0.9;
     font-weight: 400;
 }
 
-/* Hover effects for better interactivity */
+/* 💫 Hover Effects */
+.option:not(.active):hover img {
+    transform: scale(1.03);
+}
+
 .option:not(.active):hover {
     filter: brightness(0.8) saturate(1.1);
-    /* ✅ Subtle hover effect */
     transform: scale(0.99);
 }
 
-/* Responsive Design */
+/* 📱 Responsive Design */
 @media screen and (max-width: 798px) {
     .gallery-cards {
         min-width: 500px;
-        height: 400px;
+        height: 350px;
         gap: 8px;
     }
 
@@ -1441,7 +1450,7 @@ section {
 @media screen and (max-width: 718px) {
     .gallery-cards {
         min-width: 420px;
-        height: 350px;
+        height: 300px;
         gap: 6px;
     }
 
@@ -1455,16 +1464,36 @@ section {
     }
 }
 
+/* 🧊 Stability Enhancements */
+.option::before {
+    content: "";
+    display: block;
+    aspect-ratio: 4 / 5;
+    /* Keeps consistent height ratio */
+    width: 100%;
+}
+
+.shadow,
+.label,
+.info>div {
+    will-change: transform, opacity;
+}
+
+/* 📱 More responsive adjustments */
 @media screen and (max-width: 638px) {
     .gallery-cards {
         min-width: 340px;
-        height: 300px;
+        height: 260px;
         width: calc(100% - 40px);
         gap: 5px;
     }
 
     .option:nth-child(3) {
         display: none;
+    }
+
+    #gallery {
+        padding: 0px;
     }
 
     #gallery h2 {
@@ -1484,12 +1513,12 @@ section {
 @media screen and (max-width: 480px) {
     .gallery-cards {
         min-width: 280px;
-        height: 250px;
+        height: 220px;
         gap: 4px;
     }
 
     #gallery {
-        padding: 60px 15px;
+        padding: 0px;
     }
 
     .icon {
@@ -1509,7 +1538,6 @@ section {
 
     .option {
         min-width: 60px;
-        /* ✅ Adjusted for mobile */
     }
 
     .option.active .label {
@@ -1659,6 +1687,10 @@ section {
     /* margin-bottom: 20px; */
 }
 
+#bag-quotes {
+    width: 200px;
+}
+
 #bag-quotes p {
     font-size: 13px;
     color: #C1D4CB;
@@ -1776,6 +1808,10 @@ section {
     .contact-footer ul {
         flex-direction: column;
         align-items: center;
+    }
+
+    #bag-quotes {
+        margin-top: 20px;
     }
 }
 
