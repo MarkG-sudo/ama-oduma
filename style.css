@@ -555,7 +555,7 @@ section {
 .hero-content {
     background: rgba(255, 255, 255, 0);
     /* ✨ Elegant transparent overlay */
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(2px);
     /* 💎 Glassy effect */
     -webkit-backdrop-filter: blur(5px);
     /* Safari support */
