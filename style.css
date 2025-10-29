@@ -978,7 +978,9 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    transition: color 0.4s ease;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+    transition: text-shadow 0.25s ease, color 0.25s ease;
+    cursor: pointer;
 }
 
 /* Hover effects */
@@ -987,7 +989,7 @@ section {
 }
 
 .product-page-link:hover a {
-    color: #80c751;
+    transform: scale(1.02);
 
 }
 
@@ -1310,7 +1312,7 @@ section {
 
 /* 🎨 Gallery Section */
 #gallery {
-    padding: 20px 20px;
+    padding: 40px 20px;
     background-color: #1d1d18;
     text-align: center;
     background-repeat: no-repeat;
