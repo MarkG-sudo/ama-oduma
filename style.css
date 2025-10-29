@@ -803,7 +803,7 @@ section {
 }
 
 .sub-text {
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #555;
     text-transform: uppercase;
     margin-top: 10px;
@@ -813,7 +813,7 @@ section {
 .btn {
     display: inline-block;
     margin-top: 15px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #133b1f;
     text-decoration: none;
     padding-bottom: 2px;
@@ -914,7 +914,7 @@ section {
 #products h2 {
     font-size: 28px;
     margin-bottom: 60px;
-    color: #ffffff;
+    color: #dab336;
 }
 
 #products .product-list {
@@ -955,6 +955,78 @@ section {
     text-decoration: none;
     font-size: 13px;
 
+}
+
+/* Base styles (your version) */
+.product-page-link {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 1rem;
+    position: relative;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.4s ease;
+    border: 1px solid yellow;
+    padding: 10px 20px;
+
+}
+
+.product-page-link a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 21px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.4s ease;
+}
+
+/* Hover effects */
+.product-page-link:hover::after {
+    width: 100%;
+}
+
+.product-page-link:hover a {
+    color: #80c751;
+
+}
+
+/* Arrow slide animation */
+.product-page-link a i {
+    transition: transform 0.4s ease;
+}
+
+.product-page-link:hover a i {
+    transform: translateX(6px);
+}
+
+/* 📱 Responsive adjustments */
+@media (max-width: 768px) {
+    .product-page-link {
+        padding: 8px 14px;
+        margin-top: 25px;
+    }
+
+    .product-page-link a {
+        font-size: 18px;
+        gap: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-page-link {
+        padding: 6px 12px;
+        margin-top: 20px;
+    }
+
+    .product-page-link a {
+        font-size: 16px;
+    }
+
+    .product-page-link a i {
+        transform: none;
+        /* prevent awkward shifts on tiny screens */
+    }
 }
 
 /* Image Styling */
@@ -1244,7 +1316,9 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-height: 100vh;
+    min-height: 400px;
+    max-height: 600px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1254,7 +1328,7 @@ section {
 #gallery h2 {
     font-size: 26px;
     margin-bottom: 10px;
-    color: #ffffff;
+    color: #dab336;
 }
 
 #gallery p {
@@ -1275,7 +1349,7 @@ section {
     max-width: 1200px;
     width: calc(100% - 100px);
     height: 420px;
-    border-radius: 40px;
+    /* border-radius: 40px; */
     perspective: 1000px;
     gap: 10px;
 }
